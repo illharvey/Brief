@@ -31,7 +31,15 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. A logged-in user stays logged in across browser refresh and can log out from any page
   3. A user who has forgotten their password can reset it via an emailed link
   4. A user can enter freeform topics of interest and set a daily delivery time
-**Plans**: TBD
+**Plans**: 6 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Scaffold Next.js 15 project, install all dependencies, define Drizzle schema and Zod validation schemas
+- [ ] 01-02-PLAN.md — Configure Auth.js v5 split-config (edge-safe + full server), JWT sessions, middleware, rate limiter
+- [ ] 01-03-PLAN.md — Implement auth server actions (signup, sign-in, sign-out, password reset) and preference actions
+- [ ] 01-04-PLAN.md — Build 3-step onboarding flow UI (signup, topics, delivery time, confirmation) and reusable components
+- [ ] 01-05-PLAN.md — Build login, forgot-password, reset-password pages and protected dashboard placeholder
+- [ ] 01-06-PLAN.md — Human verification of complete auth and preference flows against live infrastructure
 
 ### Phase 2: Email Infrastructure
 **Goal**: The email channel is fully configured and legally compliant before any briefing email reaches a real inbox
@@ -106,7 +114,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 0/TBD | Not started | - |
+| 1. Foundation | 0/6 | Not started | - |
 | 2. Email Infrastructure | 0/TBD | Not started | - |
 | 3. Content Pipeline | 0/TBD | Not started | - |
 | 4. AI Summarisation | 0/TBD | Not started | - |
