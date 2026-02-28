@@ -7,18 +7,18 @@
 
 ### Authentication
 
-- [ ] **AUTH-01**: User can sign up with email and password
-- [ ] **AUTH-02**: User session persists across browser refresh
-- [ ] **AUTH-03**: User can log in with email and password
-- [ ] **AUTH-04**: User can reset password via email link
-- [ ] **AUTH-05**: User can log out from any page
-- [ ] **AUTH-06**: Consent timestamp and IP are recorded at signup (GDPR)
+- [x] **AUTH-01**: User can sign up with email and password
+- [x] **AUTH-02**: User session persists across browser refresh
+- [x] **AUTH-03**: User can log in with email and password
+- [x] **AUTH-04**: User can reset password via email link
+- [x] **AUTH-05**: User can log out from any page
+- [x] **AUTH-06**: Consent timestamp and IP are recorded at signup (GDPR)
 - [ ] **AUTH-07**: User can unsubscribe via one-click link with immediate processing (CAN-SPAM/GDPR)
 
 ### Preferences
 
-- [ ] **PREF-01**: User can enter freeform topics of interest (e.g. "Formula 1", "AI policy", "UK housing market")
-- [ ] **PREF-02**: User can set a daily delivery time for their briefing
+- [x] **PREF-01**: User can enter freeform topics of interest (e.g. "Formula 1", "AI policy", "UK housing market")
+- [x] **PREF-02**: User can set a daily delivery time for their briefing
 - [ ] **PREF-03**: User can update topics and delivery time at any time from the web app
 - [ ] **PREF-04**: Brief suggests adjacent topics based on a user's existing selections
 
@@ -77,15 +77,15 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| AUTH-01 | Phase 1 | Pending |
-| AUTH-02 | Phase 1 | Pending |
-| AUTH-03 | Phase 1 | Pending |
-| AUTH-04 | Phase 1 | Pending |
-| AUTH-05 | Phase 1 | Pending |
-| AUTH-06 | Phase 1 | Pending |
+| AUTH-01 | Phase 1 | Complete |
+| AUTH-02 | Phase 1 | Complete |
+| AUTH-03 | Phase 1 | Complete |
+| AUTH-04 | Phase 1 | Complete |
+| AUTH-05 | Phase 1 | Complete |
+| AUTH-06 | Phase 1 | Complete |
 | AUTH-07 | Phase 2 | Pending |
-| PREF-01 | Phase 1 | Pending |
-| PREF-02 | Phase 1 | Pending |
+| PREF-01 | Phase 1 | Complete |
+| PREF-02 | Phase 1 | Complete |
 | PREF-03 | Phase 6 | Pending |
 | PREF-04 | Phase 6 | Pending |
 | CONT-01 | Phase 3 | Pending |

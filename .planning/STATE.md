@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 1 of 7 (Foundation)
-Plan: 0 of TBD in current phase
-Status: Ready to plan
-Last activity: 2026-02-27 — Roadmap created, all 23 v1 requirements mapped to 7 phases
+Plan: 1 of 6 in current phase
+Status: In progress
+Last activity: 2026-02-28 — Completed plan 01-01: Next.js scaffold, Drizzle schema, Zod validations
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [█░░░░░░░░░] 2%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: —
-- Total execution time: —
+- Total plans completed: 1
+- Average duration: 6 min
+- Total execution time: 6 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-foundation | 1 | 6 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: —
-- Trend: —
+- Last 5 plans: 01-01 (6 min)
+- Trend: Establishing baseline
 
 *Updated after each plan completion*
 
@@ -45,6 +45,10 @@ Recent decisions affecting current work:
 - No X/Twitter integration — API cost prohibitive; conflicts with anti-toxicity goal
 - Closed beta for PoC — validate with 10-20 real users before public infrastructure
 - RSS + AI summarisation — best quality/cost ratio at small scale
+- [01-01] Used neon-http driver over neon-serverless WebSocket — simpler, no connection pooling needed at this scale
+- [01-01] Auth.js tables extended with custom columns (passwordHash, onboardingComplete) — DrizzleAdapter ignores unknown columns
+- [01-01] deliveryTime stored as HH:MM string in IANA timezone — converts to UTC at dispatch time to avoid DST bugs
+- [01-01] userTopics normalized as rows not jsonb — enables Phase 6 co-occurrence queries for PREF-04
 
 ### Pending Todos
 
@@ -59,6 +63,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-27
-Stopped at: Roadmap created and written to disk; REQUIREMENTS.md traceability updated; ready to plan Phase 1
+Last session: 2026-02-28
+Stopped at: Completed 01-01-PLAN.md — Next.js scaffold, Drizzle schema (7 tables), Zod validations
 Resume file: None
