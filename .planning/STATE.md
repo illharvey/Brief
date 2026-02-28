@@ -1,3 +1,16 @@
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: unknown
+last_updated: "2026-02-28T19:54:20.859Z"
+progress:
+  total_phases: 1
+  completed_phases: 0
+  total_plans: 6
+  completed_plans: 2
+---
+
 # Project State
 
 ## Project Reference
@@ -10,27 +23,27 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 1 of 7 (Foundation)
-Plan: 1 of 6 in current phase
+Plan: 2 of 6 in current phase
 Status: In progress
-Last activity: 2026-02-28 — Completed plan 01-01: Next.js scaffold, Drizzle schema, Zod validations
+Last activity: 2026-02-28 — Completed plan 01-02: Auth.js v5 split config, Edge middleware, Upstash rate limiter
 
-Progress: [█░░░░░░░░░] 2%
+Progress: [██░░░░░░░░] 4%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 6 min
-- Total execution time: 6 min
+- Total plans completed: 2
+- Average duration: 3.5 min
+- Total execution time: 7 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 1 | 6 min | 6 min |
+| 01-foundation | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min)
+- Last 5 plans: 01-01 (6 min), 01-02 (1 min)
 - Trend: Establishing baseline
 
 *Updated after each plan completion*
@@ -49,6 +62,9 @@ Recent decisions affecting current work:
 - [01-01] Auth.js tables extended with custom columns (passwordHash, onboardingComplete) — DrizzleAdapter ignores unknown columns
 - [01-01] deliveryTime stored as HH:MM string in IANA timezone — converts to UTC at dispatch time to avoid DST bugs
 - [01-01] userTopics normalized as rows not jsonb — enables Phase 6 co-occurrence queries for PREF-04
+- [Phase 01-02]: authorize() is in auth.ts only — auth.config.ts has authorize: undefined to prevent Edge runtime crash from Node.js crypto module
+- [Phase 01-02]: JWT strategy specified in both auth.config.ts and auth.ts — DrizzleAdapter used only for user/account persistence, not session rows
+- [Phase 01-02]: loginRatelimit uses analytics: false to preserve Upstash free tier headroom
 
 ### Pending Todos
 
@@ -64,5 +80,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 01-01-PLAN.md — Next.js scaffold, Drizzle schema (7 tables), Zod validations
+Stopped at: Completed 01-02-PLAN.md — Auth.js v5 split config, Edge middleware, Upstash rate limiter
 Resume file: None
