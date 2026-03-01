@@ -1,7 +1,7 @@
 "use client"
 import { useActionState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -12,7 +12,8 @@ async function consumeResetWrapper(prevState: unknown, formData: FormData) {
   return await consumePasswordResetAction(formData)
 }
 
-export default function ResetPasswordPage() {
+// Inner component that uses useSearchParams — must be wrapped in Suspense
+function ResetPasswordForm() {
   const [state, formAction, isPending] = useActionState(consumeResetWrapper, null)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -86,5 +87,13 @@ export default function ResetPasswordPage() {
         </Button>
       </form>
     </div>
+  )
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={null}>
+      <ResetPasswordForm />
+    </Suspense>
   )
 }

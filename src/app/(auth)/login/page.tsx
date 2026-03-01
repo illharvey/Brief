@@ -1,7 +1,7 @@
 "use client"
 import { useActionState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -12,7 +12,8 @@ async function signInWrapper(prevState: unknown, formData: FormData) {
   return await signInAction(formData)
 }
 
-export default function LoginPage() {
+// Inner component that uses useSearchParams — must be wrapped in Suspense
+function LoginForm() {
   const [state, formAction, isPending] = useActionState(signInWrapper, null)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -79,5 +80,13 @@ export default function LoginPage() {
         <Link href="/signup" className="underline">Sign up</Link>
       </p>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   )
 }
