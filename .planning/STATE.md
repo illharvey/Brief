@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-01T07:45:05.883Z"
+status: in-progress
+last_updated: "2026-03-01T13:32:48Z"
 progress:
-  total_phases: 1
-  completed_phases: 0
-  total_plans: 6
-  completed_plans: 5
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
-status: unknown
-last_updated: "2026-02-28T19:54:20.859Z"
-progress:
-  total_phases: 1
-  completed_phases: 0
-  total_plans: 6
-  completed_plans: 5
+  total_phases: 7
+  completed_phases: 1
+  total_plans: 9
+  completed_plans: 6
 ---
 
 # Project State
@@ -31,33 +18,34 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 1 — Foundation
+**Current focus:** Phase 2 — Email Infrastructure
 
 ## Current Position
 
-Phase: 1 of 7 (Foundation)
-Plan: 5 of 6 in current phase
+Phase: 2 of 7 (Email Infrastructure)
+Plan: 1 of 3 in current phase (02-01 complete)
 Status: In progress
-Last activity: 2026-02-28 — Completed plan 01-05: Login page, password reset flow, protected dashboard layout
+Last activity: 2026-03-01 — Completed plan 02-01: React Email packages, emailSuppressions schema, VerifyEmail and ResetPassword templates
 
-Progress: [████░░░░░░] 10%
+Progress: [████░░░░░░] ~15%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
-- Average duration: 3 min
-- Total execution time: 14 min
+- Total plans completed: 6
+- Average duration: ~5 min
+- Total execution time: ~29 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 5 | 14 min | 3 min |
+| 02-email-infrastructure | 1 | 15 min | 15 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min), 01-02 (1 min), 01-03 (2 min), 01-04 (8 min), 01-05 (5 min)
-- Trend: Establishing baseline
+- Last 5 plans: 01-03 (2 min), 01-04 (8 min), 01-05 (5 min), 01-06 (n/a), 02-01 (15 min)
+- Trend: Stable
 
 *Updated after each plan completion*
 
@@ -88,6 +76,9 @@ Recent decisions affecting current work:
 - [Phase 01-05]: login/page.tsx uses useEffect + router.push for redirect — correct pattern when useActionState is a client hook
 - [Phase 01-05]: dashboard/layout.tsx redirects to /login without callbackUrl — middleware handles callbackUrl injection for protected routes
 - [Phase 01-05]: dashboard/page.tsx intentionally minimal placeholder — Phase 6 will replace entirely
+- [02-01]: react-email installed as devDependency only — preview server not needed in production
+- [02-01]: No image assets in email templates — text-only branding per user preference for simplicity
+- [02-01]: emailSuppressions.email has unique constraint — one row per address; Plan 02-02 webhook handler uses upsert pattern
 
 ### Pending Todos
 
@@ -99,9 +90,10 @@ None yet.
 - [Research] Phase 2: Verify current Resend free tier limits and Google/Yahoo bulk sender enforcement thresholds
 - [Research] Phase 3: Article body extraction library choice has LOW confidence — verify @extractus/article-extractor vs readability maintenance status; verify NewsAPI free tier limits
 - [Research] Phase 5: QStash stage-chaining API specifics have LOW confidence — read current Upstash docs before Phase 5 planning
+- [Deferred] Pre-existing build error: login/page.tsx useSearchParams() not wrapped in Suspense — npm run build fails; dev server works fine; fix before production
 
 ## Session Continuity
 
-Last session: 2026-02-28
-Stopped at: Completed 01-04-PLAN.md — Onboarding flow UI, TopicInput, TimePicker, confirmation and verify-email screens
+Last session: 2026-03-01
+Stopped at: Completed 02-01-PLAN.md — React Email packages, emailSuppressions schema, VerifyEmail and ResetPassword templates
 Resume file: None

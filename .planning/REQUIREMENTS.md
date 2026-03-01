@@ -13,7 +13,7 @@
 - [x] **AUTH-04**: User can reset password via email link
 - [x] **AUTH-05**: User can log out from any page
 - [x] **AUTH-06**: Consent timestamp and IP are recorded at signup (GDPR)
-- [ ] **AUTH-07**: User can unsubscribe via one-click link with immediate processing (CAN-SPAM/GDPR)
+- [x] **AUTH-07**: User can unsubscribe via one-click link with immediate processing (CAN-SPAM/GDPR)
 
 ### Preferences
 
@@ -32,9 +32,9 @@
 ### Email Delivery
 
 - [ ] **MAIL-01**: User receives a daily HTML email briefing at their chosen delivery time
-- [ ] **MAIL-02**: Email domain is configured with SPF, DKIM, and DMARC before first send
-- [ ] **MAIL-03**: Bounce and complaint events are handled automatically via webhooks
-- [ ] **MAIL-04**: Every email includes a plain text alternative
+- [x] **MAIL-02**: Email domain is configured with SPF, DKIM, and DMARC before first send
+- [x] **MAIL-03**: Bounce and complaint events are handled automatically via webhooks
+- [x] **MAIL-04**: Every email includes a plain text alternative
 
 ### Web App
 
@@ -83,7 +83,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-04 | Phase 1 | Complete |
 | AUTH-05 | Phase 1 | Complete |
 | AUTH-06 | Phase 1 | Complete |
-| AUTH-07 | Phase 2 | Pending |
+| AUTH-07 | Phase 2 | Complete |
 | PREF-01 | Phase 1 | Complete |
 | PREF-02 | Phase 1 | Complete |
 | PREF-03 | Phase 6 | Pending |
@@ -93,9 +93,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-03 | Phase 4 | Pending |
 | CONT-04 | Phase 3 | Pending |
 | MAIL-01 | Phase 5 | Pending |
-| MAIL-02 | Phase 2 | Pending |
-| MAIL-03 | Phase 2 | Pending |
-| MAIL-04 | Phase 2 | Pending |
+| MAIL-02 | Phase 2 | Complete |
+| MAIL-03 | Phase 2 | Complete |
+| MAIL-04 | Phase 2 | Complete |
 | WEB-01 | Phase 6 | Pending |
 | WEB-02 | Phase 6 | Pending |
 | WEB-03 | Phase 6 | Pending |
