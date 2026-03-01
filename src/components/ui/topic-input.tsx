@@ -53,54 +53,75 @@ export function TopicInput({ value: topics, onChange }: TopicInputProps) {
       !topics.includes(s)
   )
 
+  const popularTopics = SEED_SUGGESTIONS.filter((s) => !topics.includes(s))
+
   return (
-    <div
-      className="flex flex-wrap gap-2 p-3 border rounded-md min-h-[80px] cursor-text focus-within:ring-2 focus-within:ring-ring"
-      onClick={() => inputRef.current?.focus()}
-    >
-      {topics.map((topic) => (
-        <Badge key={topic} variant="secondary" className="gap-1 text-sm py-1">
-          {topic}
-          <button
-            type="button"
-            onClick={(e) => { e.stopPropagation(); removeTopic(topic) }}
-            aria-label={`Remove ${topic}`}
-            className="ml-1 rounded-full hover:bg-muted"
-          >
-            <X className="h-3 w-3" />
-          </button>
-        </Badge>
-      ))}
-      <Popover open={open && (filteredSuggestions.length > 0 || inputValue.length > 0)} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
-          <input
-            ref={inputRef}
-            value={inputValue}
-            onChange={(e) => { setInputValue(e.target.value); setOpen(true) }}
-            onKeyDown={handleKeyDown}
-            onBlur={() => setTimeout(() => setOpen(false), 150)}
-            placeholder={topics.length === 0 ? "Type a topic and press Enter..." : "Add another topic..."}
-            className="flex-1 min-w-[180px] outline-none bg-transparent text-sm placeholder:text-muted-foreground"
-            aria-label="Add topic"
-          />
-        </PopoverTrigger>
-        {filteredSuggestions.length > 0 && (
-          <PopoverContent className="p-0 w-[280px]" align="start" onOpenAutoFocus={(e) => e.preventDefault()}>
-            <Command>
-              <CommandGroup heading="Suggestions">
-                {filteredSuggestions.slice(0, 6).map((s) => (
-                  <CommandItem
-                    key={s}
-                    onSelect={() => { addTopic(s); inputRef.current?.focus() }}
-                  >
-                    {s}
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </Command>
-          </PopoverContent>
-        )}
-      </Popover>
+    <div className="space-y-3">
+      <div
+        className="flex flex-wrap gap-2 p-3 border rounded-md min-h-[80px] cursor-text focus-within:ring-2 focus-within:ring-ring"
+        onClick={() => inputRef.current?.focus()}
+      >
+        {topics.map((topic) => (
+          <Badge key={topic} variant="secondary" className="gap-1 text-sm py-1">
+            {topic}
+            <button
+              type="button"
+              onClick={(e) => { e.stopPropagation(); removeTopic(topic) }}
+              aria-label={`Remove ${topic}`}
+              className="ml-1 rounded-full hover:bg-muted"
+            >
+              <X className="h-3 w-3" />
+            </button>
+          </Badge>
+        ))}
+        <Popover open={open && (filteredSuggestions.length > 0 || inputValue.length > 0)} onOpenChange={setOpen}>
+          <PopoverTrigger asChild>
+            <input
+              ref={inputRef}
+              value={inputValue}
+              onChange={(e) => { setInputValue(e.target.value); setOpen(true) }}
+              onKeyDown={handleKeyDown}
+              onBlur={() => setTimeout(() => setOpen(false), 150)}
+              placeholder={topics.length === 0 ? "Type a topic and press Enter..." : "Add another topic..."}
+              className="flex-1 min-w-[180px] outline-none bg-transparent text-sm placeholder:text-muted-foreground"
+              aria-label="Add topic"
+            />
+          </PopoverTrigger>
+          {filteredSuggestions.length > 0 && (
+            <PopoverContent className="p-0 w-[280px]" align="start" onOpenAutoFocus={(e) => e.preventDefault()}>
+              <Command>
+                <CommandGroup heading="Suggestions">
+                  {filteredSuggestions.slice(0, 6).map((s) => (
+                    <CommandItem
+                      key={s}
+                      onSelect={() => { addTopic(s); inputRef.current?.focus() }}
+                    >
+                      {s}
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          )}
+        </Popover>
+      </div>
+      {popularTopics.length > 0 && (
+        <div>
+          <p className="text-xs text-muted-foreground mb-2">Popular topics</p>
+          <div className="flex flex-wrap gap-2">
+            {popularTopics.map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => addTopic(s)}
+                className="text-xs px-3 py-1 rounded-full border border-border bg-background hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
