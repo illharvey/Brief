@@ -124,3 +124,16 @@ export const deliveryPreferences = pgTable("delivery_preferences", {
   timezone: text("timezone").notNull(), // IANA tz e.g. "Europe/London"
   updatedAt: timestamp("updated_at").defaultNow(),
 })
+
+// Email suppression list (MAIL-03, AUTH-07)
+// One row per email address — unique constraint prevents duplicate suppressions.
+// reason values: "email.bounced" | "email.complained" | "unsubscribe"
+export const emailSuppressions = pgTable("email_suppressions", {
+  id: text("id")
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  email: text("email").notNull().unique(), // unique: one row per address
+  reason: text("reason").notNull(), // "email.bounced" | "email.complained" | "unsubscribe"
+  suppressedAt: timestamp("suppressed_at").notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+})
