@@ -12,7 +12,7 @@ import {
 } from "@/lib/validations/auth"
 import { signIn as authSignIn, signOut as authSignOut } from "@/lib/auth"
 import { loginRatelimit } from "@/lib/rate-limit"
-import { resend } from "@/lib/email"
+import { sendVerificationEmail, sendPasswordResetEmail } from "@/lib/email"
 
 // -------------------------------------------------------------------------
 // signUpAction
@@ -164,12 +164,7 @@ export async function requestPasswordResetAction(formData: FormData) {
   })
 
   const resetLink = `${process.env.APP_URL}/reset-password?token=${token}`
-  await resend.emails.send({
-    from: "noreply@mail.brief.app",
-    to: parsed.data.email,
-    subject: "Reset your Brief password",
-    text: `Click this link to reset your password (expires in 1 hour):\n\n${resetLink}\n\nIf you did not request this, ignore this email.`,
-  })
+  await sendPasswordResetEmail(parsed.data.email, resetLink)
 
   return { success: true }
 }
@@ -240,10 +235,5 @@ export async function sendVerificationEmailAction(userId: string, email: string)
   })
 
   const verifyLink = `${process.env.APP_URL}/verify-email?token=${token}&email=${encodeURIComponent(email)}`
-  await resend.emails.send({
-    from: "noreply@mail.brief.app",
-    to: email,
-    subject: "Verify your Brief email address",
-    text: `Click this link to verify your email address:\n\n${verifyLink}\n\nThis link expires in 24 hours.`,
-  })
+  await sendVerificationEmail(email, verifyLink)
 }
