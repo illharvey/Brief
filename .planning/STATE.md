@@ -43,7 +43,7 @@ Progress: [████░░░░░░] 10%
 | 01-foundation | 5 | 14 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min), 01-02 (1 min), 01-03 (2 min), 01-04 (n/a), 01-05 (5 min)
+- Last 5 plans: 01-01 (6 min), 01-02 (1 min), 01-03 (2 min), 01-04 (8 min), 01-05 (5 min)
 - Trend: Establishing baseline
 
 *Updated after each plan completion*
@@ -69,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 01-03]: resolveUserId checks session first then onboarding cookie — same action code works during and after onboarding
 - [Phase 01-03]: saveDeliveryPreferenceAction returns userId on success for confirmation page ?uid= query param
 - [Phase 01-03]: Rate limit identifier is login:{email} not login:{ip} — per-email soft lock without blocking shared IPs
+- [Phase 01-04]: TopicInput built from shadcn Command+Popover+Badge — no external chip library; freeform topics always allowed
+- [Phase 01-04]: TimePicker uses Intl.DateTimeFormat().resolvedOptions().timeZone — no library needed for browser timezone detection
+- [Phase 01-04]: confirmation/page.tsx receives userId as ?uid= search param from delivery page — server components cannot read cookies set immediately before navigation
 - [Phase 01-05]: login/page.tsx uses useEffect + router.push for redirect — correct pattern when useActionState is a client hook
 - [Phase 01-05]: dashboard/layout.tsx redirects to /login without callbackUrl — middleware handles callbackUrl injection for protected routes
 - [Phase 01-05]: dashboard/page.tsx intentionally minimal placeholder — Phase 6 will replace entirely
@@ -87,5 +90,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 01-05-PLAN.md — Login page, password reset flow, protected dashboard layout
+Stopped at: Completed 01-04-PLAN.md — Onboarding flow UI, TopicInput, TimePicker, confirmation and verify-email screens
 Resume file: None

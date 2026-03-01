@@ -114,7 +114,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 3/6 | In Progress|  |
+| 1. Foundation | 5/6 | In Progress|  |
 | 2. Email Infrastructure | 0/TBD | Not started | - |
 | 3. Content Pipeline | 0/TBD | Not started | - |
 | 4. AI Summarisation | 0/TBD | Not started | - |
