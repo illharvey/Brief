@@ -8,7 +8,7 @@ progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 6
-  completed_plans: 3
+  completed_plans: 5
 ---
 
 # Project State
@@ -23,27 +23,27 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 1 of 7 (Foundation)
-Plan: 3 of 6 in current phase
+Plan: 5 of 6 in current phase
 Status: In progress
-Last activity: 2026-02-28 — Completed plan 01-03: Auth server actions, preference server actions, Resend email module
+Last activity: 2026-02-28 — Completed plan 01-05: Login page, password reset flow, protected dashboard layout
 
-Progress: [███░░░░░░░] 6%
+Progress: [████░░░░░░] 10%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
+- Total plans completed: 5
 - Average duration: 3 min
-- Total execution time: 9 min
+- Total execution time: 14 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-foundation | 3 | 9 min | 3 min |
+| 01-foundation | 5 | 14 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min), 01-02 (1 min), 01-03 (2 min)
+- Last 5 plans: 01-01 (6 min), 01-02 (1 min), 01-03 (2 min), 01-04 (n/a), 01-05 (5 min)
 - Trend: Establishing baseline
 
 *Updated after each plan completion*
@@ -69,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 01-03]: resolveUserId checks session first then onboarding cookie — same action code works during and after onboarding
 - [Phase 01-03]: saveDeliveryPreferenceAction returns userId on success for confirmation page ?uid= query param
 - [Phase 01-03]: Rate limit identifier is login:{email} not login:{ip} — per-email soft lock without blocking shared IPs
+- [Phase 01-05]: login/page.tsx uses useEffect + router.push for redirect — correct pattern when useActionState is a client hook
+- [Phase 01-05]: dashboard/layout.tsx redirects to /login without callbackUrl — middleware handles callbackUrl injection for protected routes
+- [Phase 01-05]: dashboard/page.tsx intentionally minimal placeholder — Phase 6 will replace entirely
 
 ### Pending Todos
 
@@ -84,5 +87,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-28
-Stopped at: Completed 01-03-PLAN.md — Auth server actions, preference server actions, Resend email module
+Stopped at: Completed 01-05-PLAN.md — Login page, password reset flow, protected dashboard layout
 Resume file: None
