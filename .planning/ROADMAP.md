@@ -50,7 +50,12 @@ Plans:
   2. Every outgoing email includes a plain text alternative and a List-Unsubscribe header
   3. A user clicking the one-click unsubscribe link is immediately suppressed with no further emails sent
   4. A bounce or complaint event from the email provider automatically updates the suppression list via webhook
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 02-01-PLAN.md — Install React Email packages, add emailSuppressions schema, build VerifyEmail and ResetPassword templates
+- [ ] 02-02-PLAN.md — Upgrade email helpers with HTML+text+headers, update auth sends, create webhook and unsubscribe routes
+- [ ] 02-03-PLAN.md — DNS setup: configure mail.brief.app in Resend, add SPF/DKIM/MX/DMARC records, verify with MXToolbox
 
 ### Phase 3: Content Pipeline
 **Goal**: The system reliably ingests articles from RSS feeds and news APIs for user topics, deduplicates them, and stores them ready for summarisation
@@ -115,7 +120,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/6 | In Progress|  |
-| 2. Email Infrastructure | 0/TBD | Not started | - |
+| 2. Email Infrastructure | 0/3 | Not started | - |
 | 3. Content Pipeline | 0/TBD | Not started | - |
 | 4. AI Summarisation | 0/TBD | Not started | - |
 | 5. Scheduling and Delivery | 0/TBD | Not started | - |
