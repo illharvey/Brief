@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-01T13:32:48Z"
+last_updated: "2026-03-01T15:24:56Z"
 progress:
   total_phases: 7
   completed_phases: 1
   total_plans: 9
-  completed_plans: 6
+  completed_plans: 7
 ---
 
 # Project State
@@ -23,28 +23,28 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 2 of 7 (Email Infrastructure)
-Plan: 1 of 3 in current phase (02-01 complete)
+Plan: 2 of 3 in current phase (02-02 complete)
 Status: In progress
-Last activity: 2026-03-01 — Completed plan 02-01: React Email packages, emailSuppressions schema, VerifyEmail and ResetPassword templates
+Last activity: 2026-03-01 — Completed plan 02-02: Email send helpers, unsubscribe endpoint, webhook handler, /unsubscribed page
 
-Progress: [████░░░░░░] ~15%
+Progress: [████░░░░░░] ~20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
+- Total plans completed: 7
 - Average duration: ~5 min
-- Total execution time: ~29 min
+- Total execution time: ~35 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 5 | 14 min | 3 min |
-| 02-email-infrastructure | 1 | 15 min | 15 min |
+| 02-email-infrastructure | 2 | 21 min | 10 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (2 min), 01-04 (8 min), 01-05 (5 min), 01-06 (n/a), 02-01 (15 min)
+- Last 5 plans: 01-04 (8 min), 01-05 (5 min), 01-06 (n/a), 02-01 (15 min), 02-02 (6 min)
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -79,6 +79,9 @@ Recent decisions affecting current work:
 - [02-01]: react-email installed as devDependency only — preview server not needed in production
 - [02-01]: No image assets in email templates — text-only branding per user preference for simplicity
 - [02-01]: emailSuppressions.email has unique constraint — one row per address; Plan 02-02 webhook handler uses upsert pattern
+- [Phase 02-02]: HMAC-SHA256 stateless tokens for unsubscribe — no DB table needed, 30-day expiry, timingSafeEqual prevents timing attacks
+- [Phase 02-02]: Webhook always returns 200 for unhandled event types — Resend retries on non-2xx responses causing duplicate suppression inserts
+- [Phase 02-02]: FROM_ADDRESS and APP_URL centralized as constants in email.ts — not repeated in auth.ts or other callers
 
 ### Pending Todos
 
@@ -90,10 +93,9 @@ None yet.
 - [Research] Phase 2: Verify current Resend free tier limits and Google/Yahoo bulk sender enforcement thresholds
 - [Research] Phase 3: Article body extraction library choice has LOW confidence — verify @extractus/article-extractor vs readability maintenance status; verify NewsAPI free tier limits
 - [Research] Phase 5: QStash stage-chaining API specifics have LOW confidence — read current Upstash docs before Phase 5 planning
-- [Deferred] Pre-existing build error: login/page.tsx useSearchParams() not wrapped in Suspense — npm run build fails; dev server works fine; fix before production
 
 ## Session Continuity
 
 Last session: 2026-03-01
-Stopped at: Completed 02-01-PLAN.md — React Email packages, emailSuppressions schema, VerifyEmail and ResetPassword templates
+Stopped at: Completed 02-02-PLAN.md — email send helpers, unsubscribe endpoint, webhook handler, /unsubscribed page
 Resume file: None
