@@ -82,7 +82,13 @@ Plans:
   2. Summarising the same article twice does not make a second LLM call — the cached summary is reused
   3. Every LLM call has a max_tokens cap set and the Anthropic spend cap is active before any beta user triggers the pipeline
   4. A manually reviewed sample of 10+ briefing items contains no claims that cannot be traced to the source article text
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 04-01-PLAN.md — Extend Drizzle schema: body/description columns on articles, briefings and briefingItems tables, migration
+- [ ] 04-02-PLAN.md — Summarisation library: install @anthropic-ai/sdk, types, Redis cache, LLM wrapper, ranker, assembler
+- [ ] 04-03-PLAN.md — Pipeline orchestrator: generateBriefingForUser(), dev API route, CLI test script
+- [ ] 04-04-PLAN.md — Human verification: run pipeline end-to-end, confirm cache, audit 10+ bullets for grounding
 
 ### Phase 5: Scheduling and Delivery
 **Goal**: The full pipeline runs automatically every day, delivering each user's briefing at their chosen time with guaranteed idempotency
@@ -128,7 +134,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 1. Foundation | 5/6 | In Progress|  |
 | 2. Email Infrastructure | 2/3 | In Progress|  |
 | 3. Content Pipeline | 3/4 | In Progress|  |
-| 4. AI Summarisation | 0/TBD | Not started | - |
+| 4. AI Summarisation | 0/4 | Not started | - |
 | 5. Scheduling and Delivery | 0/TBD | Not started | - |
 | 6. Web App | 0/TBD | Not started | - |
 | 7. Beta Polish | 0/TBD | Not started | - |
