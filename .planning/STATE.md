@@ -6,9 +6,9 @@ status: in-progress
 last_updated: "2026-03-02T09:14:00Z"
 progress:
   total_phases: 7
-  completed_phases: 1
-  total_plans: 9
-  completed_plans: 9
+  completed_phases: 2
+  total_plans: 13
+  completed_plans: 13
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 3 — Content Pipeline
+**Current focus:** Phase 4 — AI Summarisation
 
 ## Current Position
 
-Phase: 3 of 7 (Content Pipeline)
-Plan: 4 of 4 in current phase (03-01, 03-02, 03-03 complete — 03-04 tasks 1+2 complete, awaiting checkpoint)
-Status: In progress — checkpoint:human-verify
-Last activity: 2026-03-02 — 03-04 Tasks 1+2 complete: ingestForUser() orchestrator + POST /api/dev/ingest route. Awaiting human verification of end-to-end pipeline.
+Phase: 3 of 7 (Content Pipeline) — COMPLETE
+Plan: All 4 plans complete
+Status: Ready to plan Phase 4
+Last activity: 2026-03-02 — Phase 3 verified end-to-end: 2063 articles fetched, 578 inserted, dedup confirmed
 
-Progress: [████░░░░░░] ~28%
+Progress: [███░░░░░░░] ~43%
 
 ## Performance Metrics
 
@@ -42,7 +42,7 @@ Progress: [████░░░░░░] ~28%
 |-------|-------|-------|----------|
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
-| 03-content-pipeline | 3 | 7 min | 2.3 min |
+| 03-content-pipeline | 4 | ~97 min | ~24 min |
 
 **Recent Trend:**
 - Last 5 plans: 02-02 (6 min), 03-01 (2 min), 03-02 (2 min), 03-03 (3 min)
@@ -75,6 +75,7 @@ Recent decisions affecting current work:
 - [Phase 01-04]: TimePicker uses Intl.DateTimeFormat().resolvedOptions().timeZone — no library needed for browser timezone detection
 - [Phase 01-04]: confirmation/page.tsx receives userId as ?uid= search param from delivery page — server components cannot read cookies set immediately before navigation
 - [Phase 01-05]: login/page.tsx uses useEffect + router.push for redirect — correct pattern when useActionState is a client hook
+- [Phase 01-05]: dashboard route group renamed from (dashboard) to dashboard — route group was at / conflicting with app/page.tsx; /dashboard is the correct URL
 - [Phase 01-05]: dashboard/layout.tsx redirects to /login without callbackUrl — middleware handles callbackUrl injection for protected routes
 - [Phase 01-05]: dashboard/page.tsx intentionally minimal placeholder — Phase 6 will replace entirely
 - [02-01]: react-email installed as devDependency only — preview server not needed in production
@@ -109,5 +110,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: 03-04 Task 3 checkpoint — ingestForUser() + /api/dev/ingest implemented; awaiting human verification of end-to-end pipeline with real API keys
+Stopped at: Phase 3 complete — ready to plan Phase 4 (AI Summarisation)
 Resume file: None
