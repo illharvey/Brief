@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T09:14:00Z"
+last_updated: "2026-03-02T14:09:00Z"
 progress:
   total_phases: 7
-  completed_phases: 2
-  total_plans: 13
-  completed_plans: 13
+  completed_phases: 3
+  total_plans: 14
+  completed_plans: 14
 ---
 
 # Project State
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 
 ## Current Position
 
-Phase: 3 of 7 (Content Pipeline) — COMPLETE
-Plan: All 4 plans complete
-Status: Ready to plan Phase 4
-Last activity: 2026-03-02 — Phase 3 verified end-to-end: 2063 articles fetched, 578 inserted, dedup confirmed
+Phase: 4 of 7 (AI Summarisation) — IN PROGRESS
+Plan: 04-01 complete (1 of N plans)
+Status: In progress — Phase 4 Plan 01 complete
+Last activity: 2026-03-02 — Schema extended: body/description on articles, briefings and briefingItems tables created and pushed to Neon
 
-Progress: [███░░░░░░░] ~43%
+Progress: [████░░░░░░] ~50%
 
 ## Performance Metrics
 
@@ -43,9 +43,10 @@ Progress: [███░░░░░░░] ~43%
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
+| 04-ai-summarisation | 1 (in progress) | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 02-02 (6 min), 03-01 (2 min), 03-02 (2 min), 03-03 (3 min)
+- Last 5 plans: 03-01 (2 min), 03-02 (2 min), 03-03 (3 min), 04-01 (2 min)
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -95,6 +96,9 @@ Recent decisions affecting current work:
 - [03-03]: Guardian sourceName hardcoded to 'The Guardian' (single publication); NewsData sourceName maps from source_id (multi-publisher aggregator)
 - [03-03]: NewsData articles with null/empty link filtered before mapping — avoids RawArticle.url being empty string which would break DB dedup
 - [03-03]: NewsAPI.org NOT used — free tier prohibits non-localhost use; Guardian (5000/day) and NewsData (200/day) are production-permitted
+- [04-01]: briefings and briefingItems defined after articles in schema.ts — Drizzle FK closures are lazy but table ordering avoids forward-reference confusion
+- [04-01]: body and description on articles are nullable text — null signals extraction not attempted/failed; pipeline falls back to description then title
+- [04-01]: sourceSnapshot on briefingItems stores exact LLM input text per article — enables Phase 6 grounding audits
 
 ### Pending Todos
 
@@ -110,5 +114,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Phase 3 complete — ready to plan Phase 4 (AI Summarisation)
+Stopped at: Completed 04-01-PLAN.md — schema extension for AI summarisation, migration pushed to Neon
 Resume file: None
