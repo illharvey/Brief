@@ -23,9 +23,9 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 3 of 7 (Content Pipeline)
-Plan: 3 of 4 in current phase (03-01, 03-02, 03-03 complete — 03-04 pending)
-Status: In progress
-Last activity: 2026-03-02 — Completed plan 03-02: RSS source adapter (BBC feeds) and Reddit adapter (RSS + hot.json + subreddit search)
+Plan: 4 of 4 in current phase (03-01, 03-02, 03-03 complete — 03-04 tasks 1+2 complete, awaiting checkpoint)
+Status: In progress — checkpoint:human-verify
+Last activity: 2026-03-02 — 03-04 Tasks 1+2 complete: ingestForUser() orchestrator + POST /api/dev/ingest route. Awaiting human verification of end-to-end pipeline.
 
 Progress: [████░░░░░░] ~28%
 
@@ -109,5 +109,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 03-02-PLAN.md — RSS source adapter (BBC feeds) and Reddit adapter
+Stopped at: 03-04 Task 3 checkpoint — ingestForUser() + /api/dev/ingest implemented; awaiting human verification of end-to-end pipeline with real API keys
 Resume file: None
