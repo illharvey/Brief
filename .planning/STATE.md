@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T14:09:00Z"
+last_updated: "2026-03-02T14:13:15Z"
 progress:
   total_phases: 7
   completed_phases: 3
@@ -23,9 +23,9 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 4 of 7 (AI Summarisation) — IN PROGRESS
-Plan: 04-01 complete (1 of N plans)
-Status: In progress — Phase 4 Plan 01 complete
-Last activity: 2026-03-02 — Schema extended: body/description on articles, briefings and briefingItems tables created and pushed to Neon
+Plan: 04-02 complete (2 of N plans)
+Status: In progress — Phase 4 Plan 02 complete
+Last activity: 2026-03-02 — Summarisation library built: @anthropic-ai/sdk installed, 5-module library (types, cache, llm, rank, assemble) created and compiling
 
 Progress: [████░░░░░░] ~50%
 
@@ -43,10 +43,10 @@ Progress: [████░░░░░░] ~50%
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
-| 04-ai-summarisation | 1 (in progress) | 2 min | 2 min |
+| 04-ai-summarisation | 2 (in progress) | 4 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 03-01 (2 min), 03-02 (2 min), 03-03 (3 min), 04-01 (2 min)
+- Last 5 plans: 03-02 (2 min), 03-03 (3 min), 04-01 (2 min), 04-02 (2 min)
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -99,6 +99,10 @@ Recent decisions affecting current work:
 - [04-01]: briefings and briefingItems defined after articles in schema.ts — Drizzle FK closures are lazy but table ordering avoids forward-reference confusion
 - [04-01]: body and description on articles are nullable text — null signals extraction not attempted/failed; pipeline falls back to description then title
 - [04-01]: sourceSnapshot on briefingItems stores exact LLM input text per article — enables Phase 6 grounding audits
+- [04-02]: SUMMARISATION_MODEL env var with claude-haiku-4-5-20251001 as hardcoded default — versioned model ID, not alias
+- [04-02]: Cache key is brief:summary:{normaliseUrl} — global per article, not per-user; saves LLM cost when multiple users follow same stories
+- [04-02]: ANTHROPIC_API_KEY checked at call time (not module load) — clean error message before any LLM work begins
+- [04-02]: sourceSnapshot is empty string on cache hit — avoids re-reading article text; grounding audit only needed on fresh LLM calls
 
 ### Pending Todos
 
@@ -114,5 +118,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 04-01-PLAN.md — schema extension for AI summarisation, migration pushed to Neon
+Stopped at: Completed 04-02-PLAN.md — summarisation library built, @anthropic-ai/sdk installed, 5 modules created
 Resume file: None
