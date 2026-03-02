@@ -16,7 +16,11 @@ Backend ingestion pipeline: fetch articles from RSS feeds and news APIs for each
 ### Claude's Discretion
 The user has delegated all implementation decisions to Claude. The researcher and planner should apply best-practice defaults for a reliable, idempotent news ingestion pipeline:
 
-- **Feed sources & topic mapping:** Choose a combination of free/low-cost RSS feeds (e.g. Guardian RSS, BBC RSS, Reuters RSS) and at least one news search API (e.g. NewsAPI.org or The Guardian API) that supports keyword/topic queries. Topic-to-source mapping should be query-based (pass user topic as search term) rather than hardcoded per-topic, so any freeform topic works without configuration.
+- **Feed sources & topic mapping:** Use a combination of free/low-cost RSS feeds (e.g. Guardian RSS, BBC RSS, Reuters RSS) and at least one news search API (e.g. NewsAPI.org or The Guardian API) that supports keyword/topic queries. Topic-to-source mapping should be query-based (pass user topic as search term) rather than hardcoded per-topic, so any freeform topic works without configuration. Reddit is a required source (see below).
+
+- **Reddit as a source:** Reddit must be included as a content source alongside news feeds. Two modes:
+  1. **Topic subreddit RSS** — for a given topic, fetch the top posts from the most relevant subreddit(s) via Reddit's free RSS (`r/{subreddit}/.rss`). The researcher should identify a topic-to-subreddit mapping strategy (e.g. searching Reddit's API for matching subreddits, or a curated seed map for common topics).
+  2. **Reddit hot topics** — surface what's trending on Reddit relevant to the user's topics. Use Reddit's JSON API (`r/{subreddit}/hot.json`) to fetch hot posts, extracting the linked article URL (not the Reddit discussion URL) as the content item. This gives a "what Reddit is buzzing about" signal alongside traditional news. Posts that are self-posts (no external URL) should be skipped.
 
 - **Deduplication:** Use a URL-based unique constraint as the primary dedup mechanism (same article URL = same article). Back it with a content hash (title + URL) as a secondary check for articles republished under different URLs. Dedup should be permanent (across all runs, not just within a run) — insert-on-conflict-do-nothing pattern.
 
@@ -29,7 +33,8 @@ The user has delegated all implementation decisions to Claude. The researcher an
 <specifics>
 ## Specific Ideas
 
-No specific requirements beyond the above defaults — open to whatever sources and dedup strategy the researcher identifies as most reliable and cost-effective for a small-scale news product.
+- Reddit "hot topics" mode surfaces trending linked articles from relevant subreddits — gives the briefing a pulse on what people are actually discussing, not just what news outlets are publishing.
+- Reddit's API is free and doesn't require authentication for public subreddit RSS/JSON endpoints (no API key needed for Phase 3 scale).
 
 </specifics>
 
