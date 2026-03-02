@@ -65,7 +65,13 @@ Plans:
   1. Running the ingestion pipeline for a user's topics produces a set of deduplicated articles in the database with source name and original URL attached to each
   2. A single failing RSS feed or API source does not abort the pipeline run — other sources continue and errors are logged per feed
   3. Re-running ingestion for the same topics does not insert duplicate articles (content hash deduplication works)
-**Plans**: TBD
+**Plans**: 4 plans
+
+Plans:
+- [ ] 03-01-PLAN.md — Add articles table to Drizzle schema, define ingestion types, implement dedup helpers and persist helper
+- [ ] 03-02-PLAN.md — Implement RSS source adapter (BBC curated feeds) and Reddit adapter (RSS + hot.json + subreddit search)
+- [ ] 03-03-PLAN.md — Implement Guardian API and NewsData.io source adapters
+- [ ] 03-04-PLAN.md — Wire ingestForUser() orchestrator, create POST /api/dev/ingest dev trigger, human verify end-to-end
 
 ### Phase 4: AI Summarisation
 **Goal**: The system generates a personalised prose briefing for a user from ingested articles, with source grounding and cost-safe caching
@@ -121,7 +127,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/6 | In Progress|  |
 | 2. Email Infrastructure | 2/3 | In Progress|  |
-| 3. Content Pipeline | 0/TBD | Not started | - |
+| 3. Content Pipeline | 0/4 | Not started | - |
 | 4. AI Summarisation | 0/TBD | Not started | - |
 | 5. Scheduling and Delivery | 0/TBD | Not started | - |
 | 6. Web App | 0/TBD | Not started | - |
