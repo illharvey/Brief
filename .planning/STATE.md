@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T14:13:15Z"
+last_updated: "2026-03-02T14:17:02Z"
 progress:
   total_phases: 7
   completed_phases: 3
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 4 of 7 (AI Summarisation) — IN PROGRESS
-Plan: 04-02 complete (2 of N plans)
-Status: In progress — Phase 4 Plan 02 complete
-Last activity: 2026-03-02 — Summarisation library built: @anthropic-ai/sdk installed, 5-module library (types, cache, llm, rank, assemble) created and compiling
+Plan: 04-03 complete (3 of N plans)
+Status: In progress — Phase 4 Plan 03 complete
+Last activity: 2026-03-02 — Pipeline wired: generateBriefingForUser() orchestrator created, dev API route and CLI script added
 
-Progress: [████░░░░░░] ~50%
+Progress: [█████░░░░░] ~55%
 
 ## Performance Metrics
 
@@ -43,7 +43,7 @@ Progress: [████░░░░░░] ~50%
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
-| 04-ai-summarisation | 2 (in progress) | 4 min | 2 min |
+| 04-ai-summarisation | 3 (in progress) | 6 min | 2 min |
 
 **Recent Trend:**
 - Last 5 plans: 03-02 (2 min), 03-03 (3 min), 04-01 (2 min), 04-02 (2 min)
@@ -103,6 +103,9 @@ Recent decisions affecting current work:
 - [04-02]: Cache key is brief:summary:{normaliseUrl} — global per article, not per-user; saves LLM cost when multiple users follow same stories
 - [04-02]: ANTHROPIC_API_KEY checked at call time (not module load) — clean error message before any LLM work begins
 - [04-02]: sourceSnapshot is empty string on cache hit — avoids re-reading article text; grounding audit only needed on fresh LLM calls
+- [04-03]: dotenv already available as transitive dependency — no explicit install needed for CLI script
+- [04-03]: generateBriefingForUser exported from @/lib/summarisation module barrel — Phase 5 imports by module path not file
+- [04-03]: topicCount stored as (total topics - failed topics) in briefings row — represents topics successfully included
 
 ### Pending Todos
 
@@ -118,5 +121,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 04-02-PLAN.md — summarisation library built, @anthropic-ai/sdk installed, 5 modules created
+Stopped at: Completed 04-03-PLAN.md — generateBriefingForUser() wired, dev route + CLI script created
 Resume file: None
