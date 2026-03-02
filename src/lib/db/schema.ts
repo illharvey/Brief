@@ -5,6 +5,7 @@ import {
   boolean,
   primaryKey,
   integer,
+  unique,
 } from "drizzle-orm/pg-core"
 
 // ---------------------------------------------------------------------------
@@ -137,3 +138,28 @@ export const emailSuppressions = pgTable("email_suppressions", {
   suppressedAt: timestamp("suppressed_at").notNull(),
   createdAt: timestamp("created_at").defaultNow(),
 })
+
+// Articles ingested from RSS feeds and news APIs (CONT-01, CONT-02, CONT-04)
+// Unique constraint on (url, userId): same article may appear for different users
+// but never twice for the same user. This is per-user permanent dedup across all runs.
+export const articles = pgTable(
+  'articles',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    url: text('url').notNull(),
+    contentHash: text('content_hash').notNull(), // SHA-256(title::url) — secondary dedup
+    title: text('title').notNull(),
+    sourceName: text('source_name').notNull(),   // e.g. "BBC News - Technology", "The Guardian"
+    sourceUrl: text('source_url'),               // feed/publication homepage URL
+    publishedAt: timestamp('published_at'),      // null if feed does not provide date
+    fetchedAt: timestamp('fetched_at').defaultNow(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+  },
+  (table) => ({
+    urlUserUnique: unique().on(table.url, table.userId),
+  })
+)
