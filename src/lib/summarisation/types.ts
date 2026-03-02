@@ -20,6 +20,14 @@ export interface BriefingItem {
   articleUrl: string
 }
 
+/** A single summarised article — summary text + grounding metadata */
+export interface SummarisedArticle {
+  articleId: string
+  summary: string
+  sourceSnapshot: string
+  fromCache: boolean
+}
+
 /** Result returned by generateBriefingForUser() */
 export interface BriefingResult {
   briefingId: string

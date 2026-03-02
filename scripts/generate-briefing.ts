@@ -1,6 +1,6 @@
 // scripts/generate-briefing.ts
 // Manual pipeline test. Usage: npx tsx scripts/generate-briefing.ts <userId>
-// Requires ANTHROPIC_API_KEY, DATABASE_URL, UPSTASH_REDIS_REST_URL,
+// Requires GEMINI_API_KEY, DATABASE_URL, UPSTASH_REDIS_REST_URL,
 // UPSTASH_REDIS_REST_TOKEN in environment (reads from .env.local via tsx).
 
 import 'dotenv/config'

@@ -2,7 +2,7 @@
 // Main summarisation pipeline. Called by Phase 5 scheduler.
 //
 // Pipeline:
-// 1. Validate ANTHROPIC_API_KEY presence (early throw if missing)
+// 1. Validate GEMINI_API_KEY presence (early throw if missing)
 // 2. Load user's topics from DB
 // 3. Fetch articles ingested in last 24h for this user
 // 4. Group articles by topic (topic match = article.title or description mentions topic keyword)
@@ -27,8 +27,8 @@ import type { ArticleRow, BriefingItem, BriefingResult } from './types'
  */
 export async function generateBriefingForUser(userId: string): Promise<BriefingResult> {
   // 1. Early validation — throw before any DB or LLM work if key is missing
-  if (!process.env.ANTHROPIC_API_KEY) {
-    throw new Error('ANTHROPIC_API_KEY is not set — cannot generate briefing')
+  if (!process.env.GEMINI_API_KEY) {
+    throw new Error('GEMINI_API_KEY is not set — cannot generate briefing')
   }
 
   // 2. Load user topics
