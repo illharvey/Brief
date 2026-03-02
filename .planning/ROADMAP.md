@@ -70,7 +70,7 @@ Plans:
 Plans:
 - [ ] 03-01-PLAN.md — Add articles table to Drizzle schema, define ingestion types, implement dedup helpers and persist helper
 - [ ] 03-02-PLAN.md — Implement RSS source adapter (BBC curated feeds) and Reddit adapter (RSS + hot.json + subreddit search)
-- [ ] 03-03-PLAN.md — Implement Guardian API and NewsData.io source adapters
+- [x] 03-03-PLAN.md — Implement Guardian API and NewsData.io source adapters
 - [ ] 03-04-PLAN.md — Wire ingestForUser() orchestrator, create POST /api/dev/ingest dev trigger, human verify end-to-end
 
 ### Phase 4: AI Summarisation
@@ -127,7 +127,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 |-------|----------------|--------|-----------|
 | 1. Foundation | 5/6 | In Progress|  |
 | 2. Email Infrastructure | 2/3 | In Progress|  |
-| 3. Content Pipeline | 1/4 | In Progress|  |
+| 3. Content Pipeline | 2/4 | In Progress|  |
 | 4. AI Summarisation | 0/TBD | Not started | - |
 | 5. Scheduling and Delivery | 0/TBD | Not started | - |
 | 6. Web App | 0/TBD | Not started | - |

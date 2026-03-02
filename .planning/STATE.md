@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T09:07:14Z"
+last_updated: "2026-03-02T09:13:00Z"
 progress:
   total_phases: 7
   completed_phases: 1
   total_plans: 9
-  completed_plans: 8
+  completed_plans: 9
 ---
 
 # Project State
@@ -23,11 +23,11 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 ## Current Position
 
 Phase: 3 of 7 (Content Pipeline)
-Plan: 1 of 4 in current phase (03-01 complete)
+Plan: 3 of 4 in current phase (03-01, 03-03 complete — 03-02 pending)
 Status: In progress
-Last activity: 2026-03-02 — Completed plan 03-01: articles table schema, ingestion types, dedup utilities, persist helper
+Last activity: 2026-03-02 — Completed plan 03-03: Guardian API and NewsData.io source adapters
 
-Progress: [████░░░░░░] ~25%
+Progress: [████░░░░░░] ~28%
 
 ## Performance Metrics
 
@@ -42,10 +42,11 @@ Progress: [████░░░░░░] ~25%
 |-------|-------|-------|----------|
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
-| 03-content-pipeline | 1 | 2 min | 2 min |
+| 03-content-pipeline | 2 | 5 min | 2.5 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-05 (5 min), 01-06 (n/a), 02-01 (15 min), 02-02 (6 min), 03-01 (2 min)
+- Last 5 plans: 02-01 (15 min), 02-02 (6 min), 03-01 (2 min), 03-03 (3 min)
+- Trend: Stable
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -87,6 +88,9 @@ Recent decisions affecting current work:
 - [03-01]: contentHash uses SHA-256 of title::url concatenation — secondary dedup catches republished articles with identical title
 - [03-01]: normaliseUrl strips utm_source/medium/campaign/term/content and fragments — primary dedup key is normalised URL not raw URL
 - [03-01]: insertArticles returns { inserted, skipped } via .returning() row count — skipped = total - inserted.length (onConflictDoNothing does not return skipped rows)
+- [03-03]: Guardian sourceName hardcoded to 'The Guardian' (single publication); NewsData sourceName maps from source_id (multi-publisher aggregator)
+- [03-03]: NewsData articles with null/empty link filtered before mapping — avoids RawArticle.url being empty string which would break DB dedup
+- [03-03]: NewsAPI.org NOT used — free tier prohibits non-localhost use; Guardian (5000/day) and NewsData (200/day) are production-permitted
 
 ### Pending Todos
 
@@ -102,5 +106,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 03-01-PLAN.md — articles table, ingestion types, dedup utilities, persist helper
+Stopped at: Completed 03-03-PLAN.md — Guardian API and NewsData.io source adapters
 Resume file: None
