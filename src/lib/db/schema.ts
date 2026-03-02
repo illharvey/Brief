@@ -165,3 +165,37 @@ export const articles = pgTable(
     urlUserUnique: unique().on(table.url, table.userId),
   })
 )
+
+// ---------------------------------------------------------------------------
+// AI Summarisation tables (Phase 4)
+// briefings + briefingItems are defined after articles to avoid forward-reference
+// issues (briefingItems.articleId references articles.id).
+// ---------------------------------------------------------------------------
+
+// briefings stores the assembled markdown briefing for each user/run (CONT-03)
+export const briefings = pgTable('briefings', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  userId: text('user_id')
+    .notNull()
+    .references(() => users.id, { onDelete: 'cascade' }),
+  generatedAt: timestamp('generated_at').defaultNow(),
+  content: text('content').notNull(),         // assembled markdown briefing
+  topicCount: integer('topic_count'),          // number of topic sections included
+  itemCount: integer('item_count'),            // total number of article bullets
+  partialFailure: boolean('partial_failure').default(false), // true if any topic errored
+})
+
+// briefingItems stores per-article summaries for grounding audits and Phase 6 display (CONT-03)
+export const briefingItems = pgTable('briefing_items', {
+  id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+  briefingId: text('briefing_id')
+    .notNull()
+    .references(() => briefings.id, { onDelete: 'cascade' }),
+  articleId: text('article_id')
+    .notNull()
+    .references(() => articles.id, { onDelete: 'cascade' }),
+  topic: text('topic').notNull(),
+  summary: text('summary').notNull(),          // generated bullet text (markdown)
+  sourceSnapshot: text('source_snapshot').notNull(), // article text sent to LLM (grounding audit)
+  fromCache: boolean('from_cache').default(false),
+})
