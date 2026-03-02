@@ -24,10 +24,10 @@
 
 ### Content Pipeline
 
-- [ ] **CONT-01**: System ingests articles from curated RSS feeds mapped to user topics
-- [ ] **CONT-02**: System pulls articles from NewsAPI and Guardian API for user topics
+- [x] **CONT-01**: System ingests articles from curated RSS feeds mapped to user topics
+- [x] **CONT-02**: System pulls articles from NewsAPI and Guardian API for user topics
 - [ ] **CONT-03**: AI (Claude Haiku) summarises and composes a personalised prose briefing from ingested articles
-- [ ] **CONT-04**: Every briefing item displays the source name and links to the original article
+- [x] **CONT-04**: Every briefing item displays the source name and links to the original article
 
 ### Email Delivery
 
@@ -88,10 +88,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PREF-02 | Phase 1 | Complete |
 | PREF-03 | Phase 6 | Pending |
 | PREF-04 | Phase 6 | Pending |
-| CONT-01 | Phase 3 | Pending |
-| CONT-02 | Phase 3 | Pending |
+| CONT-01 | Phase 3 | Complete |
+| CONT-02 | Phase 3 | Complete |
 | CONT-03 | Phase 4 | Pending |
-| CONT-04 | Phase 3 | Pending |
+| CONT-04 | Phase 3 | Complete |
 | MAIL-01 | Phase 5 | Pending |
 | MAIL-02 | Phase 2 | Complete |
 | MAIL-03 | Phase 2 | Complete |

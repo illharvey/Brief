@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-01T15:24:56Z"
+last_updated: "2026-03-02T09:07:14Z"
 progress:
   total_phases: 7
   completed_phases: 1
   total_plans: 9
-  completed_plans: 7
+  completed_plans: 8
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 2 — Email Infrastructure
+**Current focus:** Phase 3 — Content Pipeline
 
 ## Current Position
 
-Phase: 2 of 7 (Email Infrastructure)
-Plan: 2 of 3 in current phase (02-02 complete)
+Phase: 3 of 7 (Content Pipeline)
+Plan: 1 of 4 in current phase (03-01 complete)
 Status: In progress
-Last activity: 2026-03-01 — Completed plan 02-02: Email send helpers, unsubscribe endpoint, webhook handler, /unsubscribed page
+Last activity: 2026-03-02 — Completed plan 03-01: articles table schema, ingestion types, dedup utilities, persist helper
 
-Progress: [████░░░░░░] ~20%
+Progress: [████░░░░░░] ~25%
 
 ## Performance Metrics
 
@@ -42,9 +42,10 @@ Progress: [████░░░░░░] ~20%
 |-------|-------|-------|----------|
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
+| 03-content-pipeline | 1 | 2 min | 2 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-04 (8 min), 01-05 (5 min), 01-06 (n/a), 02-01 (15 min), 02-02 (6 min)
+- Last 5 plans: 01-05 (5 min), 01-06 (n/a), 02-01 (15 min), 02-02 (6 min), 03-01 (2 min)
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -82,6 +83,10 @@ Recent decisions affecting current work:
 - [Phase 02-02]: HMAC-SHA256 stateless tokens for unsubscribe — no DB table needed, 30-day expiry, timingSafeEqual prevents timing attacks
 - [Phase 02-02]: Webhook always returns 200 for unhandled event types — Resend retries on non-2xx responses causing duplicate suppression inserts
 - [Phase 02-02]: FROM_ADDRESS and APP_URL centralized as constants in email.ts — not repeated in auth.ts or other callers
+- [03-01]: articles table uses composite unique constraint urlUserUnique on (url, userId) — same article can appear for multiple users but never twice for the same user
+- [03-01]: contentHash uses SHA-256 of title::url concatenation — secondary dedup catches republished articles with identical title
+- [03-01]: normaliseUrl strips utm_source/medium/campaign/term/content and fragments — primary dedup key is normalised URL not raw URL
+- [03-01]: insertArticles returns { inserted, skipped } via .returning() row count — skipped = total - inserted.length (onConflictDoNothing does not return skipped rows)
 
 ### Pending Todos
 
@@ -96,6 +101,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-01
-Stopped at: Completed 02-02-PLAN.md — email send helpers, unsubscribe endpoint, webhook handler, /unsubscribed page
+Last session: 2026-03-02
+Stopped at: Completed 03-01-PLAN.md — articles table, ingestion types, dedup utilities, persist helper
 Resume file: None
