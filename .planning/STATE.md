@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T14:17:02Z"
+last_updated: "2026-03-02T15:00:00Z"
 progress:
   total_phases: 7
   completed_phases: 3
@@ -22,12 +22,12 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 
 ## Current Position
 
-Phase: 4 of 7 (AI Summarisation) — IN PROGRESS
-Plan: 04-03 complete (3 of N plans)
-Status: In progress — Phase 4 Plan 03 complete
-Last activity: 2026-03-02 — Pipeline wired: generateBriefingForUser() orchestrator created, dev API route and CLI script added
+Phase: 4 of 7 (AI Summarisation) — COMPLETE
+Plan: 04-04 complete (4 of 4 plans)
+Status: Phase 4 complete — all plans executed and verified
+Last activity: 2026-03-02 — End-to-end pipeline human-verified: 7 topics, 12 grounded bullets, cache confirmed at 2.6s
 
-Progress: [█████░░░░░] ~55%
+Progress: [███████░░░] ~70%
 
 ## Performance Metrics
 
@@ -43,7 +43,7 @@ Progress: [█████░░░░░] ~55%
 | 01-foundation | 5 | 14 min | 3 min |
 | 02-email-infrastructure | 2 | 21 min | 10 min |
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
-| 04-ai-summarisation | 3 (in progress) | 6 min | 2 min |
+| 04-ai-summarisation | 4 (complete) | ~51 min | ~13 min |
 
 **Recent Trend:**
 - Last 5 plans: 03-02 (2 min), 03-03 (3 min), 04-01 (2 min), 04-02 (2 min)
@@ -106,6 +106,8 @@ Recent decisions affecting current work:
 - [04-03]: dotenv already available as transitive dependency — no explicit install needed for CLI script
 - [04-03]: generateBriefingForUser exported from @/lib/summarisation module barrel — Phase 5 imports by module path not file
 - [04-03]: topicCount stored as (total topics - failed topics) in briefings row — represents topics successfully included
+- [04-04]: Switched LLM provider from Anthropic to Google Gemini (gemini-2.5-flash-lite) due to zero Anthropic credit balance — functionality identical, GEMINI_API_KEY required
+- [04-04]: Pipeline verified with Gemini: 7 topics, 12 items, cache hit at 2.6s, bullets grounded — Phase 4 complete
 
 ### Pending Todos
 
@@ -121,5 +123,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-02
-Stopped at: Completed 04-03-PLAN.md — generateBriefingForUser() wired, dev route + CLI script created
+Stopped at: Completed 04-04-PLAN.md — Phase 4 AI Summarisation complete; pipeline human-verified with Gemini
 Resume file: None

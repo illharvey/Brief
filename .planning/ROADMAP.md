@@ -15,7 +15,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 1: Foundation** - Database, auth, and user preference model — everything else builds on this
 - [ ] **Phase 2: Email Infrastructure** - Sending domain, DNS records, email template, and compliance before any real email is sent
 - [ ] **Phase 3: Content Pipeline** - RSS and API feed ingestion, deduplication, and topic-to-source mapping
-- [ ] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls
+- [x] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls (completed 2026-03-02)
 - [ ] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing
 - [ ] **Phase 6: Web App** - Briefing viewer, archive, preference management, and public landing page
 - [ ] **Phase 7: Beta Polish** - Full-system hardening before opening to beta users
@@ -134,7 +134,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 1. Foundation | 5/6 | In Progress|  |
 | 2. Email Infrastructure | 2/3 | In Progress|  |
 | 3. Content Pipeline | 3/4 | In Progress|  |
-| 4. AI Summarisation | 3/4 | In Progress|  |
+| 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 0/TBD | Not started | - |
 | 6. Web App | 0/TBD | Not started | - |
 | 7. Beta Polish | 0/TBD | Not started | - |
