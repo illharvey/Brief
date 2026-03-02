@@ -151,6 +151,8 @@ export const articles = pgTable(
     url: text('url').notNull(),
     contentHash: text('content_hash').notNull(), // SHA-256(title::url) — secondary dedup
     title: text('title').notNull(),
+    body: text('body'),                          // full article body extracted by Phase 3 (null if extraction failed)
+    description: text('description'),            // article description/snippet from RSS or API
     sourceName: text('source_name').notNull(),   // e.g. "BBC News - Technology", "The Guardian"
     sourceUrl: text('source_url'),               // feed/publication homepage URL
     publishedAt: timestamp('published_at'),      // null if feed does not provide date
