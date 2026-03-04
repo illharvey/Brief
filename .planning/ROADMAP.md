@@ -15,7 +15,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 1: Foundation** - Database, auth, and user preference model — everything else builds on this (completed 2026-03-04)
 - [x] **Phase 2: Email Infrastructure** - Sending domain, DNS records, email template, and compliance before any real email is sent (completed 2026-03-04)
 - [ ] **Phase 3: Content Pipeline** - RSS and API feed ingestion, deduplication, and topic-to-source mapping
-- [x] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls (completed 2026-03-02)
+- [x] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls
+ (completed 2026-03-02)
 - [ ] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing
 - [ ] **Phase 6: Web App** - Briefing viewer, archive, preference management, and public landing page
 - [ ] **Phase 7: Beta Polish** - Full-system hardening before opening to beta users
@@ -98,7 +99,14 @@ Plans:
   1. A user receives their briefing email at approximately their chosen delivery time on each day the pipeline runs
   2. Re-running or retrying any pipeline job for a user on a given date does not result in a second email being sent to that user that day
   3. A user whose delivery time falls in a non-UTC timezone receives their briefing at the correct local time
-**Plans**: TBD
+**Plans**: 5 plans
+
+Plans:
+- [ ] 05-01-PLAN.md — Add deliveries table to Drizzle schema and push migration to Neon
+- [ ] 05-02-PLAN.md — Create BriefingEmail react-email template and sendBriefingEmail helper
+- [ ] 05-03-PLAN.md — Implement dispatch.ts: timezone check, idempotency gate, per-user pipeline orchestration
+- [ ] 05-04-PLAN.md — Create cron route, health endpoint, and vercel.json cron configuration
+- [ ] 05-05-PLAN.md — Deploy to Vercel and human-verify end-to-end email delivery
 
 ### Phase 6: Web App
 **Goal**: Users can read their briefings, browse their history, manage preferences, and find Brief — all from the web
