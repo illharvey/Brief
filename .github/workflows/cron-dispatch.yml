@@ -1,0 +1,23 @@
+name: Dispatch Briefings
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # Every 15 minutes
+  workflow_dispatch:           # Allow manual trigger from GitHub UI
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger dispatch endpoint
+        run: |
+          response=$(curl -s -o /tmp/body.txt -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            "${{ secrets.APP_URL }}/api/cron/dispatch")
+          body=$(cat /tmp/body.txt)
+          echo "Status: $response"
+          echo "Body: $body"
+          if [ "$response" != "200" ]; then
+            echo "Dispatch failed with status $response"
+            exit 1
+          fi
