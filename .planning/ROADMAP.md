@@ -118,7 +118,12 @@ Plans:
   2. A user can update their topics and save — the next briefing reflects the change
   3. A user can update their delivery time and save — dispatch respects the new time
   4. Clicking "Preferences" in a briefing email navigates to /dashboard/settings (no 404)
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 05.1-01-PLAN.md — Add design system tokens + editorial fonts, build DashboardSidebar, replace dashboard shell layout
+- [ ] 05.1-02-PLAN.md — Install sonner + select, build /dashboard/settings Server Component + SettingsForm Client Component
+- [ ] 05.1-03-PLAN.md — TypeScript build check + human verify complete settings page feature
 
 ### Phase 6: Web App
 **Goal**: Users can read their briefings, browse their history, manage preferences, and find Brief — all from the web
@@ -147,7 +152,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
+Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 5.1 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -156,5 +161,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 3. Content Pipeline | 3/4 | In Progress|  |
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 4/5 | In Progress|  |
+| 5.1. Settings Page | 0/3 | Not started | - |
 | 6. Web App | 0/TBD | Not started | - |
 | 7. Beta Polish | 0/TBD | Not started | - |
