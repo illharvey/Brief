@@ -9,7 +9,8 @@ import { ResetPassword } from "@/emails/reset-password"
 
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
-const FROM_ADDRESS = "Brief <noreply@mail.brief.app>"
+// TODO: revert to "Brief <noreply@mail.brief.app>" once mail.brief.app is verified in Resend (Phase 2 plan 02-03)
+const FROM_ADDRESS = "Brief <onboarding@resend.dev>"
 const APP_URL = process.env.APP_URL ?? "https://brief.app"
 
 // ---------------------------------------------------------------------------

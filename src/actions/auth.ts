@@ -132,7 +132,7 @@ export async function signInAction(formData: FormData) {
 // signOutAction
 // -------------------------------------------------------------------------
 export async function signOutAction() {
-  await authSignOut({ redirect: false })
+  await authSignOut({ redirectTo: "/login" })
 }
 
 // -------------------------------------------------------------------------
