@@ -45,6 +45,20 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Brief design system */
+  --color-milk: #FDF9F0;
+  --color-espresso: #1C0F05;
+  --color-beeswax: #C1522A;
+  --color-beeswax-deep: #A33E1A;
+  --color-warm-brown: #5C3D1E;
+  --color-brief-muted: #7A5C3A;
+  --color-steam: #F0E8D5;
+  --color-cream: #FAF4E8;
+
+  /* Editorial font variables */
+  --font-playfair: var(--font-playfair-display);
+  --font-dm-sans: var(--font-dm-sans);
 }
 
 :root {
