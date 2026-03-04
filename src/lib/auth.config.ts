@@ -25,6 +25,16 @@ export const authConfig: NextAuthConfig = {
       }
       return true
     },
+    jwt({ token, user }) {
+      // Persist user.id into the token on first sign-in
+      if (user?.id) token.sub = user.id
+      return token
+    },
+    session({ session, token }) {
+      // Expose token.sub as session.user.id so server components can read it
+      if (token.sub) session.user.id = token.sub
+      return session
+    },
   },
   pages: {
     signIn: "/login",
