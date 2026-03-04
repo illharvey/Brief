@@ -11,8 +11,7 @@ import type { BriefingTopicSection } from "@/emails/briefing-email"
 
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
-// Phase 2 DNS verified — production address active (mail.brief.app SPF/DKIM/DMARC confirmed via dig)
-const FROM_ADDRESS = "Brief <noreply@mail.brief.app>"
+const FROM_ADDRESS = "Brief <noreply@briefnews.online>"
 const APP_URL = process.env.APP_URL ?? "https://brief.app"
 
 // ---------------------------------------------------------------------------
@@ -132,7 +131,7 @@ export async function sendBriefingEmail(
   const html = await render(BriefingEmail({ userName, date, topics, preferencesUrl, unsubscribeUrl }))
   const text = await render(BriefingEmail({ userName, date, topics, preferencesUrl, unsubscribeUrl }), { plainText: true })
 
-  await resend.emails.send({
+  const { error } = await resend.emails.send({
     from: FROM_ADDRESS,
     to: email,
     subject: `Good morning, ${userName} — your Brief is ready`,
@@ -143,4 +142,5 @@ export async function sendBriefingEmail(
       "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
     },
   })
+  if (error) throw new Error(`Resend error: ${error.message}`)
 }
