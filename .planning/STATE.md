@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-04T14:54:03.072Z"
-progress:
-  total_phases: 5
-  completed_phases: 5
-  total_plans: 22
-  completed_plans: 22
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-04T14:00:00Z"
+last_updated: "2026-03-04T20:29:51Z"
 progress:
-  total_phases: 5
+  total_phases: 6
   completed_phases: 5
-  total_plans: 22
-  completed_plans: 22
+  total_plans: 25
+  completed_plans: 23
 ---
 
 # Project State
@@ -31,23 +18,23 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 5 complete — full dispatch pipeline live and verified
+**Current focus:** Phase 05.1 (Settings Page) — Plan 01 complete (design system + sidebar shell)
 
 ## Current Position
 
-Phase: 5 of 5 (Scheduling and Delivery) — complete (5 of 5 plans done)
-Plan: 05-05 complete — end-to-end inbox delivery verified
-Status: Phase 5 complete — briefing email delivered to real inbox; idempotency confirmed; GitHub Actions cron live
-Last activity: 2026-03-04 — live email delivery verified at will.harvey@me.com; FROM_ADDRESS corrected to noreply@briefnews.online; GitHub Actions cron replacing Vercel Cron; MAIL-01 satisfied
+Phase: 05.1 of 6 (Settings Page) — in progress (1 of 3 plans done)
+Plan: 05.1-01 complete — Brief design system tokens + editorial fonts + two-column sidebar shell
+Status: Plan 05.1-01 complete — DashboardSidebar built, espresso layout shell active at /dashboard
+Last activity: 2026-03-04 — design tokens, fonts, sidebar shell implemented; TypeScript clean
 
-Progress: [██████████] 100%
+Progress: [████████░░] ~85%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 22
+- Total plans completed: 23
 - Average duration: ~4 min
-- Total execution time: ~37 min
+- Total execution time: ~39 min
 
 **By Phase:**
 
@@ -58,13 +45,15 @@ Progress: [██████████] 100%
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
 | 04-ai-summarisation | 4 (complete) | ~51 min | ~13 min |
 | 05-scheduling-and-delivery | 5 (complete) | ~60 min | ~12 min |
+| 05.1-settings-page | 1 of 3 | ~2 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-03 (2 min), 04-04 (2 min), 05-03 (2 min), 05-04 (2 min), 05-05 (~30 min incl. human verify)
+- Last 5 plans: 04-04 (2 min), 05-03 (2 min), 05-04 (2 min), 05-05 (~30 min incl. human verify), 05.1-01 (~2 min)
 - Trend: Stable
 
 *Updated after each plan completion*
 | Phase 05-scheduling-and-delivery P05 | ~30min | 3 tasks | 2 files |
+| Phase 05.1-settings-page P01 | ~2min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -137,6 +126,10 @@ Recent decisions affecting current work:
 - [Phase 05-05]: FROM_ADDRESS corrected to noreply@briefnews.online — briefnews.online is the Resend-verified domain; mail.brief.app was not verified and caused silent delivery failure
 - [Phase 05-05]: GitHub Actions cron replaces Vercel Cron — Hobby plan does not support sub-daily schedules; GitHub Actions free tier supports arbitrary cron expressions
 - [Phase 05-05]: MAIL-01 satisfied — live email delivery confirmed to will.harvey@me.com with correct HTML structure; idempotency verified (skipped=1 on second dispatch)
+- [05.1-01]: --color-brief-muted used for #7A5C3A instead of --color-muted — avoids shadowing shadcn's gray muted token
+- [05.1-01]: Brief tokens added inside existing @theme inline block — one block rule prevents duplicate @theme conflicts
+- [05.1-01]: DashboardSidebar is a Client Component — usePathname() requires browser runtime; layout.tsx remains a Server Component
+- [05.1-01]: Grain overlay uses SVG feTurbulence fixed-position — CSS noise without external image assets
 
 ### Pending Todos
 
@@ -144,10 +137,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Phase 5 complete, all planned work delivered.
+None — Plan 05.1-01 complete, PREF-03 design foundation delivered.
 
 ## Session Continuity
 
 Last session: 2026-03-04
-Stopped at: Completed 05-05-PLAN.md — live email delivery verified to will.harvey@me.com; MAIL-01 satisfied; Phase 5 (Scheduling and Delivery) fully complete
+Stopped at: Completed 05.1-01-PLAN.md — Brief design system tokens, Playfair Display + DM Sans fonts, and two-column espresso sidebar shell delivered; TypeScript clean; PREF-03 partially satisfied (foundation complete)
 Resume file: None

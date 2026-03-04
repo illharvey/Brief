@@ -19,7 +19,7 @@
 
 - [x] **PREF-01**: User can enter freeform topics of interest (e.g. "Formula 1", "AI policy", "UK housing market")
 - [x] **PREF-02**: User can set a daily delivery time for their briefing
-- [ ] **PREF-03**: User can update topics and delivery time at any time from the web app
+- [x] **PREF-03**: User can update topics and delivery time at any time from the web app
 - [ ] **PREF-04**: Brief suggests adjacent topics based on a user's existing selections
 
 ### Content Pipeline
@@ -86,7 +86,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-07 | Phase 2 | Complete |
 | PREF-01 | Phase 1 | Complete |
 | PREF-02 | Phase 1 | Complete |
-| PREF-03 | Phase 5.1 | Pending |
+| PREF-03 | Phase 5.1 | Complete |
 | PREF-04 | Phase 6 | Pending |
 | CONT-01 | Phase 3 | Complete |
 | CONT-02 | Phase 3 | Complete |
