@@ -107,6 +107,16 @@ None - no external service configuration required.
 - CLI script available at `npx tsx scripts/generate-briefing.ts <userId>` for end-to-end validation
 - Phase 4 fully complete — all summarisation pipeline components built and wired
 
+## Self-Check: PASSED
+
+- src/lib/summarisation/index.ts: FOUND
+- src/app/api/dev/summarise/route.ts: FOUND
+- scripts/generate-briefing.ts: FOUND
+- Commit 4a10ee2 (Task 1): FOUND
+- Commit 1be4590 (Task 2): FOUND
+- 04-03-SUMMARY.md: FOUND
+- TypeScript: no compile errors
+
 ---
 *Phase: 04-ai-summarisation*
 *Completed: 2026-03-02*

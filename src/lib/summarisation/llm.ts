@@ -2,7 +2,7 @@
 // LLM article summarisation with Redis cache-aside and input truncation.
 // Cache hit → return cached. Miss → truncate → call Haiku → cache → return.
 
-import Anthropic from '@anthropic-ai/sdk'
+import { GoogleGenerativeAI } from '@google/generative-ai'
 import { getSummary, setSummary } from './cache'
 import { normaliseUrl } from '@/lib/ingestion/dedup'
 import type { ArticleRow } from './types'
@@ -35,8 +35,8 @@ function buildSourceSnapshot(article: ArticleRow): string {
 export async function summariseArticle(
   article: ArticleRow
 ): Promise<{ summary: string; fromCache: boolean; sourceSnapshot: string }> {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    throw new Error('ANTHROPIC_API_KEY is not set — cannot call Anthropic API')
+  if (!process.env.GEMINI_API_KEY) {
+    throw new Error('GEMINI_API_KEY is not set — cannot call Gemini API')
   }
 
   const normUrl = normaliseUrl(article.url)
@@ -51,17 +51,13 @@ export async function summariseArticle(
   const sourceSnapshot = buildSourceSnapshot(article)
 
   // 3. LLM call
-  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-  const response = await client.messages.create({
-    model: process.env.SUMMARISATION_MODEL ?? 'claude-haiku-4-5-20251001',
-    max_tokens: 256,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: 'user', content: `Title: ${article.title}\n\n${sourceSnapshot}` }],
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+  const model = genAI.getGenerativeModel({
+    model: process.env.SUMMARISATION_MODEL ?? 'gemini-2.5-flash-lite',
+    systemInstruction: SYSTEM_PROMPT,
   })
-
-  const summary = response.content[0]?.type === 'text'
-    ? response.content[0].text.trim()
-    : ''
+  const result = await model.generateContent(`Title: ${article.title}\n\n${sourceSnapshot}`)
+  const summary = result.response.text().trim()
 
   // 4. Cache the result before returning
   if (summary) {
