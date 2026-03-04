@@ -199,3 +199,33 @@ export const briefingItems = pgTable('briefing_items', {
   sourceSnapshot: text('source_snapshot').notNull(), // article text sent to LLM (grounding audit)
   fromCache: boolean('from_cache').default(false),
 })
+
+// ---------------------------------------------------------------------------
+// Dispatch tables (Phase 5)
+// ---------------------------------------------------------------------------
+
+// Delivery audit log and idempotency gate (MAIL-01)
+// Unique constraint on (userId, deliveryDate) prevents double-sends.
+// deliveryDate is the date in the USER's local timezone (YYYY-MM-DD) — not UTC.
+// retryCount tracks per-day retry attempts: 0 = first failure, 1 = retried once → stop.
+export const deliveries = pgTable(
+  'deliveries',
+  {
+    id: text('id').primaryKey().$defaultFn(() => crypto.randomUUID()),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    deliveryDate: text('delivery_date').notNull(),   // "YYYY-MM-DD" in user's local timezone
+    status: text('status').notNull(),                // "sent" | "skipped" | "failed"
+    scheduledFor: text('scheduled_for').notNull(),   // "HH:MM" user's chosen delivery time
+    sentAt: timestamp('sent_at'),                    // null until successfully sent
+    briefingId: text('briefing_id')
+      .references(() => briefings.id, { onDelete: 'set null' }),
+    failureReason: text('failure_reason'),           // error message if status="failed"
+    retryCount: integer('retry_count').default(0),   // 0=first attempt/failure; 1=retried once
+    createdAt: timestamp('created_at').defaultNow(),
+  },
+  (table) => ({
+    userDateUnique: unique().on(table.userId, table.deliveryDate),
+  })
+)
