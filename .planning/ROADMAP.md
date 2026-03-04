@@ -17,7 +17,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 3: Content Pipeline** - RSS and API feed ingestion, deduplication, and topic-to-source mapping
 - [x] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls
  (completed 2026-03-02)
-- [ ] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing
+- [x] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing (completed 2026-03-04)
+- [ ] **Phase 5.1: Settings Page** *(gap closure — INSERTED)* - Dashboard settings page so users can update topics and delivery time post-signup
 - [ ] **Phase 6: Web App** - Briefing viewer, archive, preference management, and public landing page
 - [ ] **Phase 7: Beta Polish** - Full-system hardening before opening to beta users
 
@@ -107,6 +108,17 @@ Plans:
 - [ ] 05-03-PLAN.md — Implement dispatch.ts: timezone check, idempotency gate, per-user pipeline orchestration
 - [ ] 05-04-PLAN.md — Create cron route, health endpoint, and vercel.json cron configuration
 - [ ] 05-05-PLAN.md — Deploy to Vercel and human-verify end-to-end email delivery
+
+### Phase 5.1: Settings Page *(gap closure — INSERTED)*
+**Goal**: Users can update their topics and delivery time from the dashboard, and the Preferences link in briefing emails resolves to a working page
+**Depends on**: Phase 5
+**Requirements**: PREF-03
+**Success Criteria** (what must be TRUE):
+  1. A logged-in user can navigate to /dashboard/settings and see their current topics and delivery time
+  2. A user can update their topics and save — the next briefing reflects the change
+  3. A user can update their delivery time and save — dispatch respects the new time
+  4. Clicking "Preferences" in a briefing email navigates to /dashboard/settings (no 404)
+**Plans**: TBD
 
 ### Phase 6: Web App
 **Goal**: Users can read their briefings, browse their history, manage preferences, and find Brief — all from the web

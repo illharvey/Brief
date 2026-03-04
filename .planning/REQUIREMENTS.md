@@ -86,7 +86,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | AUTH-07 | Phase 2 | Complete |
 | PREF-01 | Phase 1 | Complete |
 | PREF-02 | Phase 1 | Complete |
-| PREF-03 | Phase 6 | Pending |
+| PREF-03 | Phase 5.1 | Pending |
 | PREF-04 | Phase 6 | Pending |
 | CONT-01 | Phase 3 | Complete |
 | CONT-02 | Phase 3 | Complete |
