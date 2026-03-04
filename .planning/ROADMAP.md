@@ -12,8 +12,8 @@ Brief is a personalised daily news briefing delivered by email and web. The buil
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Foundation** - Database, auth, and user preference model — everything else builds on this
-- [ ] **Phase 2: Email Infrastructure** - Sending domain, DNS records, email template, and compliance before any real email is sent
+- [x] **Phase 1: Foundation** - Database, auth, and user preference model — everything else builds on this (completed 2026-03-04)
+- [x] **Phase 2: Email Infrastructure** - Sending domain, DNS records, email template, and compliance before any real email is sent (completed 2026-03-04)
 - [ ] **Phase 3: Content Pipeline** - RSS and API feed ingestion, deduplication, and topic-to-source mapping
 - [x] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls (completed 2026-03-02)
 - [ ] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing
@@ -34,12 +34,12 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 6 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Scaffold Next.js 15 project, install all dependencies, define Drizzle schema and Zod validation schemas
-- [ ] 01-02-PLAN.md — Configure Auth.js v5 split-config (edge-safe + full server), JWT sessions, middleware, rate limiter
-- [ ] 01-03-PLAN.md — Implement auth server actions (signup, sign-in, sign-out, password reset) and preference actions
-- [ ] 01-04-PLAN.md — Build 3-step onboarding flow UI (signup, topics, delivery time, confirmation) and reusable components
-- [ ] 01-05-PLAN.md — Build login, forgot-password, reset-password pages and protected dashboard placeholder
-- [ ] 01-06-PLAN.md — Human verification of complete auth and preference flows against live infrastructure
+- [x] 01-01-PLAN.md — Scaffold Next.js 15 project, install all dependencies, define Drizzle schema and Zod validation schemas
+- [x] 01-02-PLAN.md — Configure Auth.js v5 split-config (edge-safe + full server), JWT sessions, middleware, rate limiter
+- [x] 01-03-PLAN.md — Implement auth server actions (signup, sign-in, sign-out, password reset) and preference actions
+- [x] 01-04-PLAN.md — Build 3-step onboarding flow UI (signup, topics, delivery time, confirmation) and reusable components
+- [x] 01-05-PLAN.md — Build login, forgot-password, reset-password pages and protected dashboard placeholder
+- [x] 01-06-PLAN.md — Human verification of complete auth and preference flows against live infrastructure
 
 ### Phase 2: Email Infrastructure
 **Goal**: The email channel is fully configured and legally compliant before any briefing email reaches a real inbox
@@ -53,9 +53,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01-PLAN.md — Install React Email packages, add emailSuppressions schema, build VerifyEmail and ResetPassword templates
-- [ ] 02-02-PLAN.md — Upgrade email helpers with HTML+text+headers, update auth sends, create webhook and unsubscribe routes
-- [ ] 02-03-PLAN.md — DNS setup: configure mail.brief.app in Resend, add SPF/DKIM/MX/DMARC records, verify with MXToolbox
+- [x] 02-01-PLAN.md — Install React Email packages, add emailSuppressions schema, build VerifyEmail and ResetPassword templates
+- [x] 02-02-PLAN.md — Upgrade email helpers with HTML+text+headers, update auth sends, create webhook and unsubscribe routes
+- [x] 02-03-PLAN.md — DNS setup: configure mail.brief.app in Resend, add SPF/DKIM/MX/DMARC records, verify with MXToolbox
 
 ### Phase 3: Content Pipeline
 **Goal**: The system reliably ingests articles from RSS feeds and news APIs for user topics, deduplicates them, and stores them ready for summarisation
@@ -131,8 +131,8 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation | 5/6 | In Progress|  |
-| 2. Email Infrastructure | 2/3 | In Progress|  |
+| 1. Foundation | 6/6 | Complete   | 2026-03-04 |
+| 2. Email Infrastructure | 3/3 | Complete   | 2026-03-04 |
 | 3. Content Pipeline | 3/4 | In Progress|  |
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 0/TBD | Not started | - |

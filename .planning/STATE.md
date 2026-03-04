@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-04T00:00:00Z"
+last_updated: "2026-03-04T09:12:12Z"
 progress:
   total_phases: 7
   completed_phases: 3
   total_plans: 17
-  completed_plans: 16
+  completed_plans: 17
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 4 — AI Summarisation
+**Current focus:** Phase 5 — Dispatch Pipeline
 
 ## Current Position
 
-Phase: 1 of 7 (Foundation) — COMPLETE (retrospective close)
-Plan: 01-06 complete (6 of 6 plans)
-Status: Phase 1 fully verified — all 8 requirements confirmed against live infrastructure
-Last activity: 2026-03-04 — Human verification of auth + preference flows passed; signOut bug fixed; Phase 1 complete
+Phase: 2 of 7 (Email Infrastructure) — COMPLETE (all 3 plans done)
+Plan: 02-03 complete (3 of 3 plans)
+Status: Phase 2 fully complete — email templates, webhook handler, suppression list, and DNS authentication all confirmed live
+Last activity: 2026-03-04 — DNS records verified live via dig (SPF, DKIM, DMARC, MX); Phase 2 complete
 
-Progress: [███████░░░] ~70%
+Progress: [████████░░] ~76%
 
 ## Performance Metrics
 
@@ -41,7 +41,7 @@ Progress: [███████░░░] ~70%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-foundation | 5 | 14 min | 3 min |
-| 02-email-infrastructure | 2 | 21 min | 10 min |
+| 02-email-infrastructure | 3 | ~51 min | ~17 min |
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
 | 04-ai-summarisation | 4 (complete) | ~51 min | ~13 min |
 
@@ -85,6 +85,9 @@ Recent decisions affecting current work:
 - [Phase 02-02]: HMAC-SHA256 stateless tokens for unsubscribe — no DB table needed, 30-day expiry, timingSafeEqual prevents timing attacks
 - [Phase 02-02]: Webhook always returns 200 for unhandled event types — Resend retries on non-2xx responses causing duplicate suppression inserts
 - [Phase 02-02]: FROM_ADDRESS and APP_URL centralized as constants in email.ts — not repeated in auth.ts or other callers
+- [02-03]: DNS verified via dig (authoritative) rather than waiting for MXToolbox web UI — equivalent resolution mechanism
+- [02-03]: Resend dashboard shows Pending (normal — polls independently); DNS confirmed live via dig, will auto-resolve
+- [02-03]: DMARC p=none monitoring-only for Phase 2 — satisfies Gmail/Yahoo/Microsoft 2025 bulk sender requirements; escalate after delivery patterns established
 - [03-01]: articles table uses composite unique constraint urlUserUnique on (url, userId) — same article can appear for multiple users but never twice for the same user
 - [03-01]: contentHash uses SHA-256 of title::url concatenation — secondary dedup catches republished articles with identical title
 - [03-01]: normaliseUrl strips utm_source/medium/campaign/term/content and fragments — primary dedup key is normalised URL not raw URL
@@ -126,5 +129,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-04
-Stopped at: Completed 01-06-PLAN.md — Phase 1 Foundation human-verified; all AUTH and PREF requirements confirmed; signOut bug fixed
+Stopped at: Completed 02-03-PLAN.md — DNS authentication verified live (SPF, DKIM, DMARC, MX via dig); Phase 2 Email Infrastructure complete
 Resume file: None
