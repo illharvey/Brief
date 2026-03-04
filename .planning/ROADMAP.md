@@ -18,7 +18,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 4: AI Summarisation** - Article-level LLM summarisation with caching, source grounding, and cost controls
  (completed 2026-03-02)
 - [x] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing (completed 2026-03-04)
-- [ ] **Phase 5.1: Settings Page** *(gap closure — INSERTED)* - Dashboard settings page so users can update topics and delivery time post-signup
+- [x] **Phase 5.1: Settings Page** *(gap closure — INSERTED)* - Dashboard settings page so users can update topics and delivery time post-signup (completed 2026-03-04)
 - [ ] **Phase 6: Web App** - Briefing viewer, archive, preference management, and public landing page
 - [ ] **Phase 7: Beta Polish** - Full-system hardening before opening to beta users
 
@@ -121,9 +121,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 05.1-01-PLAN.md — Add design system tokens + editorial fonts, build DashboardSidebar, replace dashboard shell layout
-- [ ] 05.1-02-PLAN.md — Install sonner + select, build /dashboard/settings Server Component + SettingsForm Client Component
-- [ ] 05.1-03-PLAN.md — TypeScript build check + human verify complete settings page feature
+- [x] 05.1-01-PLAN.md — Add design system tokens + editorial fonts, build DashboardSidebar, replace dashboard shell layout
+- [x] 05.1-02-PLAN.md — Install sonner + select, build /dashboard/settings Server Component + SettingsForm Client Component
+- [x] 05.1-03-PLAN.md — TypeScript build check + human verify complete settings page feature
 
 ### Phase 6: Web App
 **Goal**: Users can read their briefings, browse their history, manage preferences, and find Brief — all from the web
@@ -161,6 +161,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 5.1 → 6 → 7
 | 3. Content Pipeline | 3/4 | In Progress|  |
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 4/5 | In Progress|  |
-| 5.1. Settings Page | 0/3 | Not started | - |
+| 5.1. Settings Page | 3/3 | Complete    | 2026-03-04 |
 | 6. Web App | 0/TBD | Not started | - |
 | 7. Beta Polish | 0/TBD | Not started | - |
