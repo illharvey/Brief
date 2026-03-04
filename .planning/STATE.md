@@ -35,12 +35,12 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 
 ## Current Position
 
-Phase: 2 of 7 (Email Infrastructure) — COMPLETE (all 3 plans done)
-Plan: 02-03 complete (3 of 3 plans)
-Status: Phase 2 fully complete — email templates, webhook handler, suppression list, and DNS authentication all confirmed live
-Last activity: 2026-03-04 — DNS records verified live via dig (SPF, DKIM, DMARC, MX); Phase 2 complete
+Phase: 5 of 7 (Scheduling and Delivery) — in progress (3 of 4 plans done)
+Plan: 05-03 complete (3 of 4 plans)
+Status: Phase 5 Plan 03 complete — dispatch orchestrator runDispatch() with timezone-aware scheduling, idempotency, retry policy, and structured logging
+Last activity: 2026-03-04 — dispatch.ts created; runDispatch() callable by cron route (Plan 05-04)
 
-Progress: [████████░░] ~76%
+Progress: [█████████░] ~90%
 
 ## Performance Metrics
 
@@ -127,6 +127,9 @@ Recent decisions affecting current work:
 - [01-06]: signOutAction must use redirectTo:/login not redirect:false — Auth.js v5 signOut() server-side redirect parameter
 - [01-06]: FROM_ADDRESS set to onboarding@resend.dev for testing — noreply@mail.brief.app must be verified in Resend before production
 - [01-06]: TopicInput Popover focus bug deferred — freeform typing blocked; Popular Topics buttons workaround; fix before Phase 6
+- [05-03]: sourceName used as BriefingTopicSection headline — article title not carried through BriefingItem; clean fallback without extra DB join
+- [05-03]: Serial runDispatch() processing — beta scale (10-20 users) doesn't warrant parallelism; per-user try/catch isolates failures
+- [05-03]: not_due counted as skipped in DispatchResult — internal distinction, external aggregate counts remain correct
 
 ### Pending Todos
 
@@ -142,5 +145,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-04
-Stopped at: Completed 02-03-PLAN.md — DNS authentication verified live (SPF, DKIM, DMARC, MX via dig); Phase 2 Email Infrastructure complete
+Stopped at: Completed 05-03-PLAN.md — dispatch orchestrator (runDispatch) created; Phase 5 Plan 3 of 4 complete
 Resume file: None

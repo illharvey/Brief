@@ -31,7 +31,7 @@
 
 ### Email Delivery
 
-- [ ] **MAIL-01**: User receives a daily HTML email briefing at their chosen delivery time
+- [x] **MAIL-01**: User receives a daily HTML email briefing at their chosen delivery time
 - [x] **MAIL-02**: Email domain is configured with SPF, DKIM, and DMARC before first send
 - [x] **MAIL-03**: Bounce and complaint events are handled automatically via webhooks
 - [x] **MAIL-04**: Every email includes a plain text alternative
@@ -92,7 +92,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CONT-02 | Phase 3 | Complete |
 | CONT-03 | Phase 4 | Complete |
 | CONT-04 | Phase 3 | Complete |
-| MAIL-01 | Phase 5 | Pending |
+| MAIL-01 | Phase 5 | Complete |
 | MAIL-02 | Phase 2 | Complete |
 | MAIL-03 | Phase 2 | Complete |
 | MAIL-04 | Phase 2 | Complete |

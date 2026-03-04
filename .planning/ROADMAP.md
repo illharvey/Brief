@@ -143,6 +143,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 6 → 7
 | 2. Email Infrastructure | 3/3 | Complete   | 2026-03-04 |
 | 3. Content Pipeline | 3/4 | In Progress|  |
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
-| 5. Scheduling and Delivery | 0/TBD | Not started | - |
+| 5. Scheduling and Delivery | 3/5 | In Progress|  |
 | 6. Web App | 0/TBD | Not started | - |
 | 7. Beta Polish | 0/TBD | Not started | - |
