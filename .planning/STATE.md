@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-04T20:29:51Z"
+last_updated: "2026-03-04T20:35:12Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 25
-  completed_plans: 23
+  completed_plans: 24
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 05.1 (Settings Page) — Plan 01 complete (design system + sidebar shell)
+**Current focus:** Phase 05.1 (Settings Page) — Plan 02 complete (/dashboard/settings page with save flow + toast feedback)
 
 ## Current Position
 
-Phase: 05.1 of 6 (Settings Page) — in progress (1 of 3 plans done)
-Plan: 05.1-01 complete — Brief design system tokens + editorial fonts + two-column sidebar shell
-Status: Plan 05.1-01 complete — DashboardSidebar built, espresso layout shell active at /dashboard
-Last activity: 2026-03-04 — design tokens, fonts, sidebar shell implemented; TypeScript clean
+Phase: 05.1 of 6 (Settings Page) — in progress (2 of 3 plans done)
+Plan: 05.1-02 complete — /dashboard/settings Server Component + Client Form + sonner + select
+Status: Plan 05.1-02 complete — PREF-03 deliverable complete; /dashboard/settings 404 resolved; settings page fully functional
+Last activity: 2026-03-04 — settings page built, shadcn sonner+select installed, Toaster wired into root layout, TypeScript clean
 
-Progress: [████████░░] ~85%
+Progress: [█████████░] ~90%
 
 ## Performance Metrics
 
@@ -45,15 +45,16 @@ Progress: [████████░░] ~85%
 | 03-content-pipeline | 4 | ~97 min | ~24 min |
 | 04-ai-summarisation | 4 (complete) | ~51 min | ~13 min |
 | 05-scheduling-and-delivery | 5 (complete) | ~60 min | ~12 min |
-| 05.1-settings-page | 1 of 3 | ~2 min | ~2 min |
+| 05.1-settings-page | 2 of 3 | ~4 min | ~2 min |
 
 **Recent Trend:**
-- Last 5 plans: 04-04 (2 min), 05-03 (2 min), 05-04 (2 min), 05-05 (~30 min incl. human verify), 05.1-01 (~2 min)
+- Last 5 plans: 05-03 (2 min), 05-04 (2 min), 05-05 (~30 min incl. human verify), 05.1-01 (~2 min), 05.1-02 (~2 min)
 - Trend: Stable
 
 *Updated after each plan completion*
 | Phase 05-scheduling-and-delivery P05 | ~30min | 3 tasks | 2 files |
 | Phase 05.1-settings-page P01 | ~2min | 2 tasks | 5 files |
+| Phase 05.1-settings-page P02 | ~2min | 2 tasks | 5 files |
 
 ## Accumulated Context
 
@@ -130,6 +131,10 @@ Recent decisions affecting current work:
 - [05.1-01]: Brief tokens added inside existing @theme inline block — one block rule prevents duplicate @theme conflicts
 - [05.1-01]: DashboardSidebar is a Client Component — usePathname() requires browser runtime; layout.tsx remains a Server Component
 - [05.1-01]: Grain overlay uses SVG feTurbulence fixed-position — CSS noise without external image assets
+- [05.1-02]: saveSettingsAction is a client-side async wrapper (not a server action) that calls both saveTopicsAction and saveDeliveryPreferenceAction sequentially — short-circuits on topics failure
+- [05.1-02]: Timezone re-detected client-side on every mount via Intl.DateTimeFormat().resolvedOptions().timeZone — ensures accuracy regardless of stored value
+- [05.1-02]: Toaster placed in root layout (not dashboard layout) — available across all routes including future non-dashboard pages
+- [05.1-02]: TIME_SLOTS has 17 entries (6 AM–10 PM inclusive) — plan CONTEXT said 16 but 6 to 22 at 1-hour increments is 17; implemented correct count
 
 ### Pending Todos
 
@@ -137,10 +142,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Plan 05.1-01 complete, PREF-03 design foundation delivered.
+None — Plan 05.1-02 complete, PREF-03 fully delivered.
 
 ## Session Continuity
 
 Last session: 2026-03-04
-Stopped at: Completed 05.1-01-PLAN.md — Brief design system tokens, Playfair Display + DM Sans fonts, and two-column espresso sidebar shell delivered; TypeScript clean; PREF-03 partially satisfied (foundation complete)
+Stopped at: Completed 05.1-02-PLAN.md — /dashboard/settings page with Server Component + Client Form, shadcn sonner+select installed, Toaster in root layout, TypeScript clean; PREF-03 satisfied
 Resume file: None
