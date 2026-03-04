@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-02T20:22:15.530Z"
-progress:
-  total_phases: 4
-  completed_phases: 2
-  total_plans: 17
-  completed_plans: 15
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-02T15:00:00Z"
+last_updated: "2026-03-04T00:00:00Z"
 progress:
   total_phases: 7
   completed_phases: 3
-  total_plans: 14
-  completed_plans: 14
+  total_plans: 17
+  completed_plans: 16
 ---
 
 # Project State
@@ -35,10 +22,10 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 
 ## Current Position
 
-Phase: 4 of 7 (AI Summarisation) — COMPLETE
-Plan: 04-04 complete (4 of 4 plans)
-Status: Phase 4 complete — all plans executed and verified
-Last activity: 2026-03-02 — End-to-end pipeline human-verified: 7 topics, 12 grounded bullets, cache confirmed at 2.6s
+Phase: 1 of 7 (Foundation) — COMPLETE (retrospective close)
+Plan: 01-06 complete (6 of 6 plans)
+Status: Phase 1 fully verified — all 8 requirements confirmed against live infrastructure
+Last activity: 2026-03-04 — Human verification of auth + preference flows passed; signOut bug fixed; Phase 1 complete
 
 Progress: [███████░░░] ~70%
 
@@ -121,6 +108,9 @@ Recent decisions affecting current work:
 - [04-03]: topicCount stored as (total topics - failed topics) in briefings row — represents topics successfully included
 - [04-04]: Switched LLM provider from Anthropic to Google Gemini (gemini-2.5-flash-lite) due to zero Anthropic credit balance — functionality identical, GEMINI_API_KEY required
 - [04-04]: Pipeline verified with Gemini: 7 topics, 12 items, cache hit at 2.6s, bullets grounded — Phase 4 complete
+- [01-06]: signOutAction must use redirectTo:/login not redirect:false — Auth.js v5 signOut() server-side redirect parameter
+- [01-06]: FROM_ADDRESS set to onboarding@resend.dev for testing — noreply@mail.brief.app must be verified in Resend before production
+- [01-06]: TopicInput Popover focus bug deferred — freeform typing blocked; Popular Topics buttons workaround; fix before Phase 6
 
 ### Pending Todos
 
@@ -135,6 +125,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-03-02
-Stopped at: Completed 04-04-PLAN.md — Phase 4 AI Summarisation complete; pipeline human-verified with Gemini
+Last session: 2026-03-04
+Stopped at: Completed 01-06-PLAN.md — Phase 1 Foundation human-verified; all AUTH and PREF requirements confirmed; signOut bug fixed
 Resume file: None
