@@ -3,6 +3,19 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
+last_updated: "2026-03-04T13:25:23.498Z"
+progress:
+  total_phases: 5
+  completed_phases: 4
+  total_plans: 22
+  completed_plans: 21
+---
+
+---
+gsd_state_version: 1.0
+milestone: v1.0
+milestone_name: milestone
+status: unknown
 last_updated: "2026-03-04T09:51:24.046Z"
 progress:
   total_phases: 4
@@ -35,12 +48,12 @@ See: .planning/PROJECT.md (updated 2026-02-25)
 
 ## Current Position
 
-Phase: 5 of 7 (Scheduling and Delivery) — in progress (3 of 4 plans done)
-Plan: 05-03 complete (3 of 4 plans)
-Status: Phase 5 Plan 03 complete — dispatch orchestrator runDispatch() with timezone-aware scheduling, idempotency, retry policy, and structured logging
-Last activity: 2026-03-04 — dispatch.ts created; runDispatch() callable by cron route (Plan 05-04)
+Phase: 5 of 7 (Scheduling and Delivery) — complete (4 of 4 plans done)
+Plan: 05-04 complete (4 of 4 plans)
+Status: Phase 5 complete — cron dispatch route, health endpoint, and vercel.json created; full delivery pipeline wired
+Last activity: 2026-03-04 — /api/cron/dispatch, /api/health/scheduler, vercel.json created; Phase 5 done; ready for Phase 6
 
-Progress: [█████████░] ~90%
+Progress: [█████████░] ~95%
 
 ## Performance Metrics
 
@@ -63,6 +76,7 @@ Progress: [█████████░] ~90%
 - Trend: Stable
 
 *Updated after each plan completion*
+| Phase 05-scheduling-and-delivery P04 | 2 | 2 tasks | 3 files |
 
 ## Accumulated Context
 
@@ -130,6 +144,8 @@ Recent decisions affecting current work:
 - [05-03]: sourceName used as BriefingTopicSection headline — article title not carried through BriefingItem; clean fallback without extra DB join
 - [05-03]: Serial runDispatch() processing — beta scale (10-20 users) doesn't warrant parallelism; per-user try/catch isolates failures
 - [05-03]: not_due counted as skipped in DispatchResult — internal distinction, external aggregate counts remain correct
+- [Phase 05-04]: maxDuration=300 for cron route — Vercel Pro plan fluid compute supports serial dispatch for ~20 beta users
+- [Phase 05-04]: */15 * * * * Vercel Cron schedule requires Pro plan — Hobby limited to daily; CRON_SECRET must be set as Vercel env var before deployment
 
 ### Pending Todos
 
@@ -145,5 +161,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-03-04
-Stopped at: Completed 05-03-PLAN.md — dispatch orchestrator (runDispatch) created; Phase 5 Plan 3 of 4 complete
+Stopped at: Completed 05-04-PLAN.md — cron dispatch route, health endpoint, and vercel.json created; Phase 5 (Scheduling and Delivery) complete
 Resume file: None
