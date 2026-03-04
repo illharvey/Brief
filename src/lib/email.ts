@@ -6,11 +6,13 @@ import { emailSuppressions } from "@/lib/db/schema"
 import { eq } from "drizzle-orm"
 import { VerifyEmail } from "@/emails/verify-email"
 import { ResetPassword } from "@/emails/reset-password"
+import { BriefingEmail } from "@/emails/briefing-email"
+import type { BriefingTopicSection } from "@/emails/briefing-email"
 
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
-// TODO: revert to "Brief <noreply@mail.brief.app>" once mail.brief.app is verified in Resend (Phase 2 plan 02-03)
-const FROM_ADDRESS = "Brief <onboarding@resend.dev>"
+// Phase 2 DNS verified — production address active (mail.brief.app SPF/DKIM/DMARC confirmed via dig)
+const FROM_ADDRESS = "Brief <noreply@mail.brief.app>"
 const APP_URL = process.env.APP_URL ?? "https://brief.app"
 
 // ---------------------------------------------------------------------------
@@ -101,6 +103,39 @@ export async function sendPasswordResetEmail(email: string, resetUrl: string): P
     from: FROM_ADDRESS,
     to: email,
     subject: "Reset your Brief password",
+    html,
+    text,
+    headers: {
+      "List-Unsubscribe": `<${APP_URL}/api/unsubscribe?token=${token}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+    },
+  })
+}
+
+// ---------------------------------------------------------------------------
+// Briefing email — daily personalised HTML briefing (MAIL-01)
+// Follows the same isSuppressed + List-Unsubscribe pattern as other send helpers.
+// topics must be pre-filtered (empty topics excluded, items capped at 5) by caller.
+// ---------------------------------------------------------------------------
+export async function sendBriefingEmail(
+  email: string,
+  userName: string,
+  topics: BriefingTopicSection[],
+  date: string,
+): Promise<void> {
+  if (await isSuppressed(email)) return
+
+  const token = generateUnsubscribeToken(email)
+  const unsubscribeUrl = `${APP_URL}/api/unsubscribe?token=${token}`
+  const preferencesUrl = `${APP_URL}/dashboard/settings`
+
+  const html = await render(BriefingEmail({ userName, date, topics, preferencesUrl, unsubscribeUrl }))
+  const text = await render(BriefingEmail({ userName, date, topics, preferencesUrl, unsubscribeUrl }), { plainText: true })
+
+  await resend.emails.send({
+    from: FROM_ADDRESS,
+    to: email,
+    subject: `Good morning, ${userName} — your Brief is ready`,
     html,
     text,
     headers: {
