@@ -10,6 +10,7 @@ export function LandingNav() {
         <div className="hidden md:flex items-center gap-8">
           <a href="#how-it-works" className="text-brief-muted hover:text-milk font-dm-sans text-sm transition-colors">How it works</a>
           <a href="#topics" className="text-brief-muted hover:text-milk font-dm-sans text-sm transition-colors">Topics</a>
+          <Link href="/login" className="text-brief-muted hover:text-milk font-dm-sans text-sm transition-colors">Log in</Link>
           <Link href="/signup" className="text-brief-muted hover:text-milk font-dm-sans text-sm transition-colors">Sign up</Link>
         </div>
         <Link
