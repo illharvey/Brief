@@ -138,7 +138,7 @@ Plans:
 **Plans**: 4 plans
 
 Plans:
-- [ ] 06-01-PLAN.md — Foundation: proxy.ts migration, install react-markdown + remark-gfm, add Libre Baskerville font + ticker keyframe, fix signup email pre-fill, add extractBriefingHeadline utility
+- [x] 06-01-PLAN.md — Foundation: proxy.ts migration, install react-markdown + remark-gfm, add Libre Baskerville font + ticker keyframe, fix signup email pre-fill, add extractBriefingHeadline utility
 - [ ] 06-02-PLAN.md — Briefing viewer + archive: replace /dashboard placeholder, BriefingViewer/BriefingList/TopicSuggestions components, [id] route, addTopicAction, topic-graph.ts
 - [ ] 06-03-PLAN.md — Public landing page: all 8 sections, CSS ticker, email CTA routing, root page.tsx with auth redirect
 - [ ] 06-04-PLAN.md — Human verification of all 6 phase success criteria in live browser
@@ -168,5 +168,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 5.1 → 6 → 7
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 4/5 | In Progress|  |
 | 5.1. Settings Page | 3/3 | Complete    | 2026-03-04 |
-| 6. Web App | 0/4 | Not started | - |
+| 6. Web App | 1/4 | In Progress | - |
 | 7. Beta Polish | 0/TBD | Not started | - |

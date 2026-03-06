@@ -40,8 +40,8 @@
 
 - [ ] **WEB-01**: User can read today's briefing via the web app
 - [ ] **WEB-02**: User can browse past briefings in an archive
-- [ ] **WEB-03**: User can manage topics, delivery time, and account details from a settings page
-- [ ] **WEB-04**: A public landing page explains Brief and captures beta signup interest
+- [x] **WEB-03**: User can manage topics, delivery time, and account details from a settings page
+- [x] **WEB-04**: A public landing page explains Brief and captures beta signup interest
 
 ## v2 Requirements
 
@@ -98,8 +98,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MAIL-04 | Phase 2 | Complete |
 | WEB-01 | Phase 6 | Pending |
 | WEB-02 | Phase 6 | Pending |
-| WEB-03 | Phase 6 | Pending |
-| WEB-04 | Phase 6 | Pending |
+| WEB-03 | Phase 6 | Complete |
+| WEB-04 | Phase 6 | Complete |
 
 **Coverage:**
 - v1 requirements: 23 total

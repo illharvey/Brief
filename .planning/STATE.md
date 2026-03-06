@@ -2,26 +2,13 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-status: unknown
-last_updated: "2026-03-04T20:53:36.475Z"
-progress:
-  total_phases: 6
-  completed_phases: 6
-  total_plans: 25
-  completed_plans: 25
----
-
----
-gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-04T20:40:00Z"
+last_updated: "2026-03-06T13:58:30Z"
 progress:
   total_phases: 6
-  completed_phases: 6
-  total_plans: 25
-  completed_plans: 25
+  completed_phases: 5
+  total_plans: 29
+  completed_plans: 26
 ---
 
 # Project State
@@ -31,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 05.1 (Settings Page) — COMPLETE. All 3 plans done. PREF-03 satisfied. Phase 6 is next.
+**Current focus:** Phase 06 (Web App) — IN PROGRESS. Plan 01 of 4 done. Plans 02-04 remaining.
 
 ## Current Position
 
-Phase: 05.1 of 6 (Settings Page) — COMPLETE (3 of 3 plans done)
-Plan: 05.1-03 complete — Human verification of /dashboard/settings; all four success criteria confirmed
-Status: Phase 05.1 complete — PREF-03 satisfied; settings page human-verified in live browser; auth fix (expose user.id via jwt/session callbacks) applied
-Last activity: 2026-03-04 — settings page human-verified; TypeScript clean; Phase 5.1 complete
+Phase: 06 of 6 (Web App) — IN PROGRESS (1 of 4 plans done)
+Plan: 06-01 complete — Foundation infrastructure: proxy.ts migration, fonts, animations, utilities, signup pre-fill
+Status: Phase 06 Plan 01 complete — proxy.ts created, react-markdown installed, Libre Baskerville font loaded, ticker animation added, extractBriefingHeadline exported, signup email pre-fill wired
+Last activity: 2026-03-06 — Phase 6 Plan 01 executed; TypeScript clean; build passes with no deprecation warnings
 
-Progress: [██████████] 100%
+Progress: [██████████] 90%
 
 ## Performance Metrics
 
@@ -69,6 +56,7 @@ Progress: [██████████] 100%
 | Phase 05.1-settings-page P01 | ~2min | 2 tasks | 5 files |
 | Phase 05.1-settings-page P02 | ~2min | 2 tasks | 5 files |
 | Phase 05.1-settings-page P03 | ~5min | 2 tasks | 0 files |
+| Phase 06-web-app P01 | ~5min | 2 tasks | 6 files |
 
 ## Accumulated Context
 
@@ -149,6 +137,9 @@ Recent decisions affecting current work:
 - [05.1-02]: Timezone re-detected client-side on every mount via Intl.DateTimeFormat().resolvedOptions().timeZone — ensures accuracy regardless of stored value
 - [05.1-02]: Toaster placed in root layout (not dashboard layout) — available across all routes including future non-dashboard pages
 - [05.1-02]: TIME_SLOTS has 17 entries (6 AM–10 PM inclusive) — plan CONTEXT said 16 but 6 to 22 at 1-hour increments is 17; implemented correct count
+- [06-01]: proxy.ts uses `export const { auth: proxy }` — Next.js 16 requires the export to NOT be named `middleware`; old middleware.ts deleted
+- [06-01]: Signup page split into SignUpPage (async server component) + SignUpForm (client component) — server reads searchParams Promise, client uses useActionState
+- [06-01]: extractBriefingHeadline truncates to "H1, H2 — and N more" when more than 3 headings — keeps headline concise in UI
 
 ### Pending Todos
 
@@ -156,10 +147,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Phase 05.1 complete, PREF-03 fully satisfied and human-verified.
+None — Phase 06 Plan 01 foundation complete; Plans 02-04 ready to execute.
 
 ## Session Continuity
 
-Last session: 2026-03-04
-Stopped at: Completed 05.1-03-PLAN.md — Human verification approved; Phase 5.1 complete; PREF-03 satisfied
+Last session: 2026-03-06
+Stopped at: Completed 06-01-PLAN.md — proxy.ts migration, react-markdown installed, Libre Baskerville font, ticker animation, extractBriefingHeadline, signup email pre-fill
 Resume file: None
