@@ -168,5 +168,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 5.1 → 6 → 7
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 4/5 | In Progress|  |
 | 5.1. Settings Page | 3/3 | Complete    | 2026-03-04 |
-| 6. Web App | 1/4 | In Progress | - |
+| 6. Web App | 3/4 | In Progress|  |
 | 7. Beta Polish | 0/TBD | Not started | - |

@@ -3,7 +3,7 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-06T14:01:09Z"
+last_updated: "2026-03-06T14:02:14Z"
 progress:
   total_phases: 6
   completed_phases: 5
@@ -18,14 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 06 (Web App) — IN PROGRESS. Plans 01-02 of 4 done. Plans 03-04 remaining.
+**Current focus:** Phase 06 (Web App) — IN PROGRESS. Plans 01-03 of 4 done. Plan 04 remaining.
 
 ## Current Position
 
-Phase: 06 of 6 (Web App) — IN PROGRESS (2 of 4 plans done)
-Plan: 06-02 complete — Briefing viewer, 14-day archive, topic suggestions, addTopicAction, /dashboard/briefings/[id] route
-Status: Phase 06 Plan 02 complete — BriefingViewer, BriefingList, TopicSuggestions, getAdjacentTopics, dashboard fully replaced, individual briefing route with ownership guard
-Last activity: 2026-03-06 — Phase 6 Plan 02 executed; TypeScript clean; npm run build passes with all routes
+Phase: 06 of 6 (Web App) — IN PROGRESS (3 of 4 plans done)
+Plan: 06-03 complete — Public landing page: 8 sections, CSS ticker, email CTA to /signup?email=..., auth redirect for logged-in users
+Status: Phase 06 Plan 03 complete — LandingNav, Hero, Ticker, HowItWorks, TopicsGrid, QuoteSection, BottomCTA, LandingFooter; page.tsx serves landing to guests, redirects auth users to /dashboard
+Last activity: 2026-03-06 — Phase 6 Plan 03 executed; TypeScript clean; npm run build passes with 21 routes
 
 Progress: [██████████] 90%
 
@@ -58,6 +58,7 @@ Progress: [██████████] 90%
 | Phase 05.1-settings-page P03 | ~5min | 2 tasks | 0 files |
 | Phase 06-web-app P01 | ~5min | 2 tasks | 6 files |
 | Phase 06-web-app P02 | 2min | 2 tasks | 7 files |
+| Phase 06-web-app P03 | ~2min | 2 tasks | 9 files |
 
 ## Accumulated Context
 
@@ -144,6 +145,9 @@ Recent decisions affecting current work:
 - [Phase 06-web-app]: addTopicAction is a separate file from saveTopicsAction — new action only appends, existing action deletes and replaces all topics
 - [Phase 06-web-app]: Today-check uses Intl.DateTimeFormat en-CA (YYYY-MM-DD) in user's timezone to avoid UTC date boundary mismatch
 - [Phase 06-web-app]: BriefingPage uses await props.params per Next.js 16 async params requirement
+- [06-03]: BottomCTA created as separate bottom-cta.tsx Client Component — keeps page.tsx clean and matches plan's import structure
+- [06-03]: page.tsx calls auth() in Server Component only — correct pattern; not in Edge runtime (per RESEARCH.md Pitfall 2)
+- [06-03]: Nav links use hidden md:flex — standard responsive Tailwind pattern for mobile-hidden links
 
 ### Pending Todos
 
@@ -151,10 +155,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Phase 06 Plans 01-02 complete; Plans 03-04 ready to execute.
+None — Phase 06 Plans 01-03 complete; Plan 04 (dashboard polish/final) ready to execute.
 
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 06-02-PLAN.md — briefing viewer, 14-day archive list, topic suggestions, addTopicAction, dashboard replaced, /dashboard/briefings/[id] route
+Stopped at: Completed 06-03-PLAN.md — public landing page with 8 sections, CSS ticker, email CTA pre-fill, auth redirect for logged-in users
 Resume file: None
