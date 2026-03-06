@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-06T13:58:30Z"
+last_updated: "2026-03-06T14:01:09Z"
 progress:
   total_phases: 6
   completed_phases: 5
   total_plans: 29
-  completed_plans: 26
+  completed_plans: 28
 ---
 
 # Project State
@@ -18,14 +18,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 06 (Web App) — IN PROGRESS. Plan 01 of 4 done. Plans 02-04 remaining.
+**Current focus:** Phase 06 (Web App) — IN PROGRESS. Plans 01-02 of 4 done. Plans 03-04 remaining.
 
 ## Current Position
 
-Phase: 06 of 6 (Web App) — IN PROGRESS (1 of 4 plans done)
-Plan: 06-01 complete — Foundation infrastructure: proxy.ts migration, fonts, animations, utilities, signup pre-fill
-Status: Phase 06 Plan 01 complete — proxy.ts created, react-markdown installed, Libre Baskerville font loaded, ticker animation added, extractBriefingHeadline exported, signup email pre-fill wired
-Last activity: 2026-03-06 — Phase 6 Plan 01 executed; TypeScript clean; build passes with no deprecation warnings
+Phase: 06 of 6 (Web App) — IN PROGRESS (2 of 4 plans done)
+Plan: 06-02 complete — Briefing viewer, 14-day archive, topic suggestions, addTopicAction, /dashboard/briefings/[id] route
+Status: Phase 06 Plan 02 complete — BriefingViewer, BriefingList, TopicSuggestions, getAdjacentTopics, dashboard fully replaced, individual briefing route with ownership guard
+Last activity: 2026-03-06 — Phase 6 Plan 02 executed; TypeScript clean; npm run build passes with all routes
 
 Progress: [██████████] 90%
 
@@ -57,6 +57,7 @@ Progress: [██████████] 90%
 | Phase 05.1-settings-page P02 | ~2min | 2 tasks | 5 files |
 | Phase 05.1-settings-page P03 | ~5min | 2 tasks | 0 files |
 | Phase 06-web-app P01 | ~5min | 2 tasks | 6 files |
+| Phase 06-web-app P02 | 2min | 2 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -140,6 +141,9 @@ Recent decisions affecting current work:
 - [06-01]: proxy.ts uses `export const { auth: proxy }` — Next.js 16 requires the export to NOT be named `middleware`; old middleware.ts deleted
 - [06-01]: Signup page split into SignUpPage (async server component) + SignUpForm (client component) — server reads searchParams Promise, client uses useActionState
 - [06-01]: extractBriefingHeadline truncates to "H1, H2 — and N more" when more than 3 headings — keeps headline concise in UI
+- [Phase 06-web-app]: addTopicAction is a separate file from saveTopicsAction — new action only appends, existing action deletes and replaces all topics
+- [Phase 06-web-app]: Today-check uses Intl.DateTimeFormat en-CA (YYYY-MM-DD) in user's timezone to avoid UTC date boundary mismatch
+- [Phase 06-web-app]: BriefingPage uses await props.params per Next.js 16 async params requirement
 
 ### Pending Todos
 
@@ -147,10 +151,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Phase 06 Plan 01 foundation complete; Plans 02-04 ready to execute.
+None — Phase 06 Plans 01-02 complete; Plans 03-04 ready to execute.
 
 ## Session Continuity
 
 Last session: 2026-03-06
-Stopped at: Completed 06-01-PLAN.md — proxy.ts migration, react-markdown installed, Libre Baskerville font, ticker animation, extractBriefingHeadline, signup email pre-fill
+Stopped at: Completed 06-02-PLAN.md — briefing viewer, 14-day archive list, topic suggestions, addTopicAction, dashboard replaced, /dashboard/briefings/[id] route
 Resume file: None

@@ -20,7 +20,7 @@
 - [x] **PREF-01**: User can enter freeform topics of interest (e.g. "Formula 1", "AI policy", "UK housing market")
 - [x] **PREF-02**: User can set a daily delivery time for their briefing
 - [x] **PREF-03**: User can update topics and delivery time at any time from the web app
-- [ ] **PREF-04**: Brief suggests adjacent topics based on a user's existing selections
+- [x] **PREF-04**: Brief suggests adjacent topics based on a user's existing selections
 
 ### Content Pipeline
 
@@ -38,8 +38,8 @@
 
 ### Web App
 
-- [ ] **WEB-01**: User can read today's briefing via the web app
-- [ ] **WEB-02**: User can browse past briefings in an archive
+- [x] **WEB-01**: User can read today's briefing via the web app
+- [x] **WEB-02**: User can browse past briefings in an archive
 - [x] **WEB-03**: User can manage topics, delivery time, and account details from a settings page
 - [x] **WEB-04**: A public landing page explains Brief and captures beta signup interest
 
@@ -87,7 +87,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PREF-01 | Phase 1 | Complete |
 | PREF-02 | Phase 1 | Complete |
 | PREF-03 | Phase 5.1 | Complete |
-| PREF-04 | Phase 6 | Pending |
+| PREF-04 | Phase 6 | Complete |
 | CONT-01 | Phase 3 | Complete |
 | CONT-02 | Phase 3 | Complete |
 | CONT-03 | Phase 4 | Complete |
@@ -96,8 +96,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | MAIL-02 | Phase 2 | Complete |
 | MAIL-03 | Phase 2 | Complete |
 | MAIL-04 | Phase 2 | Complete |
-| WEB-01 | Phase 6 | Pending |
-| WEB-02 | Phase 6 | Pending |
+| WEB-01 | Phase 6 | Complete |
+| WEB-02 | Phase 6 | Complete |
 | WEB-03 | Phase 6 | Complete |
 | WEB-04 | Phase 6 | Complete |
 
