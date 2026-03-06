@@ -13,7 +13,7 @@ async function signUpWrapper(prevState: unknown, formData: FormData) {
   return await signUpAction(formData)
 }
 
-export default function SignUpPage() {
+function SignUpForm({ prefillEmail }: { prefillEmail?: string }) {
   const [state, formAction, isPending] = useActionState(signUpWrapper, null)
   const router = useRouter()
 
@@ -41,6 +41,7 @@ export default function SignUpPage() {
             type="email"
             placeholder="you@example.com"
             autoComplete="email"
+            defaultValue={prefillEmail}
             required
           />
           {state?.error === "invalid_input" && state.fieldErrors?.email && (
@@ -81,4 +82,9 @@ export default function SignUpPage() {
       </p>
     </div>
   )
+}
+
+export default async function SignUpPage(props: { searchParams: Promise<{ email?: string }> }) {
+  const { email: prefillEmail } = await props.searchParams
+  return <SignUpForm prefillEmail={prefillEmail} />
 }

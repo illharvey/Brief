@@ -59,6 +59,13 @@
   /* Editorial font variables */
   --font-playfair: var(--font-playfair-display);
   --font-dm-sans: var(--font-dm-sans);
+  --font-libre-baskerville: var(--font-libre-baskerville);
+  --animate-ticker: ticker 25s linear infinite;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 :root {
