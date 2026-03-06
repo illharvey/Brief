@@ -6,6 +6,7 @@ import { eq, desc } from "drizzle-orm"
 import { BriefingViewer } from "@/components/briefing/briefing-viewer"
 import { BriefingList } from "@/components/briefing/briefing-list"
 import { TopicSuggestions } from "@/components/briefing/topic-suggestions"
+import { RefreshBriefingButton } from "@/components/briefing/refresh-button"
 import { getAdjacentTopics } from "@/lib/topic-graph"
 import { extractBriefingHeadline } from "@/lib/utils"
 import Link from "next/link"
@@ -51,9 +52,12 @@ export default async function DashboardPage() {
       {/* Briefing header */}
       {hasTodayBriefing && mostRecent ? (
         <>
-          <div className="mb-6">
+          <div className="mb-4">
             <p className="text-brief-muted font-dm-sans text-xs uppercase tracking-wider mb-1">{formattedDate}</p>
             <h1 className="font-playfair font-bold text-2xl text-espresso">{headline}</h1>
+          </div>
+          <div className="flex justify-end mb-4">
+            <RefreshBriefingButton />
           </div>
           <BriefingViewer content={mostRecent.content} />
           {suggestions.length > 0 && <TopicSuggestions suggestions={suggestions} />}
@@ -73,6 +77,9 @@ export default async function DashboardPage() {
                 Read yesterday&apos;s briefing
               </Link>
             )}
+          </div>
+          <div className="flex justify-end">
+            <RefreshBriefingButton />
           </div>
         </div>
       )}
