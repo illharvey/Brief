@@ -19,7 +19,7 @@ Decimal phases appear between their surrounding integers in numeric order.
  (completed 2026-03-02)
 - [x] **Phase 5: Scheduling and Delivery** - Cron-driven fan-out pipeline that assembles and sends the daily briefing (completed 2026-03-04)
 - [x] **Phase 5.1: Settings Page** *(gap closure — INSERTED)* - Dashboard settings page so users can update topics and delivery time post-signup (completed 2026-03-04)
-- [ ] **Phase 6: Web App** - Briefing viewer, archive, preference management, and public landing page
+- [x] **Phase 6: Web App** - Briefing viewer, archive, preference management, and public landing page (completed 2026-03-07)
 - [ ] **Phase 7: Beta Polish** - Full-system hardening before opening to beta users
 
 ## Phase Details
@@ -168,5 +168,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 5.1 → 6 → 7
 | 4. AI Summarisation | 4/4 | Complete   | 2026-03-02 |
 | 5. Scheduling and Delivery | 4/5 | In Progress|  |
 | 5.1. Settings Page | 3/3 | Complete    | 2026-03-04 |
-| 6. Web App | 3/4 | In Progress|  |
+| 6. Web App | 4/4 | Complete   | 2026-03-07 |
 | 7. Beta Polish | 0/TBD | Not started | - |

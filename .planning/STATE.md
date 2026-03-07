@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: in-progress
-last_updated: "2026-03-06T14:02:14Z"
+last_updated: "2026-03-07T00:00:00Z"
 progress:
   total_phases: 6
-  completed_phases: 5
+  completed_phases: 6
   total_plans: 29
-  completed_plans: 28
+  completed_plans: 29
 ---
 
 # Project State
@@ -18,16 +18,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 06 (Web App) — IN PROGRESS. Plans 01-03 of 4 done. Plan 04 remaining.
+**Current focus:** Phase 06 (Web App) — COMPLETE. All 4 plans done. All 6 success criteria human-verified PASS.
 
 ## Current Position
 
-Phase: 06 of 6 (Web App) — IN PROGRESS (3 of 4 plans done)
-Plan: 06-03 complete — Public landing page: 8 sections, CSS ticker, email CTA to /signup?email=..., auth redirect for logged-in users
-Status: Phase 06 Plan 03 complete — LandingNav, Hero, Ticker, HowItWorks, TopicsGrid, QuoteSection, BottomCTA, LandingFooter; page.tsx serves landing to guests, redirects auth users to /dashboard
-Last activity: 2026-03-06 — Phase 6 Plan 03 executed; TypeScript clean; npm run build passes with 21 routes
+Phase: 06 of 6 (Web App) — COMPLETE (4 of 4 plans done)
+Plan: 06-04 complete — Human verification PASS: all 6 phase criteria confirmed in live browser; Log in link in landing nav; refreshBriefingAction + RefreshBriefingButton added to /dashboard
+Status: Phase 06 COMPLETE — v1.0 milestone achieved; ready for closed beta deployment
+Last activity: 2026-03-07 — Phase 6 Plan 04 human verification approved; all criteria PASS
 
-Progress: [██████████] 90%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
@@ -59,6 +59,7 @@ Progress: [██████████] 90%
 | Phase 06-web-app P01 | ~5min | 2 tasks | 6 files |
 | Phase 06-web-app P02 | 2min | 2 tasks | 7 files |
 | Phase 06-web-app P03 | ~2min | 2 tasks | 9 files |
+| Phase 06-web-app P04 | ~15min | 2 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -148,6 +149,9 @@ Recent decisions affecting current work:
 - [06-03]: BottomCTA created as separate bottom-cta.tsx Client Component — keeps page.tsx clean and matches plan's import structure
 - [06-03]: page.tsx calls auth() in Server Component only — correct pattern; not in Edge runtime (per RESEARCH.md Pitfall 2)
 - [06-03]: Nav links use hidden md:flex — standard responsive Tailwind pattern for mobile-hidden links
+- [06-04]: refreshBriefingAction calls generateBriefingForUser then redirect('/dashboard') — server-side redirect after generation avoids client polling
+- [06-04]: RefreshBriefingButton uses React useFormStatus pending state to disable button during generation
+- [06-04]: Log in link added to LandingNav href=/login so returning users have a clear path without manually typing /login
 
 ### Pending Todos
 
@@ -155,10 +159,10 @@ None yet.
 
 ### Blockers/Concerns
 
-None — Phase 06 Plans 01-03 complete; Plan 04 (dashboard polish/final) ready to execute.
+None — Phase 06 complete. All 6 success criteria human-verified PASS. v1.0 milestone achieved.
 
 ## Session Continuity
 
-Last session: 2026-03-06
-Stopped at: Completed 06-03-PLAN.md — public landing page with 8 sections, CSS ticker, email CTA pre-fill, auth redirect for logged-in users
+Last session: 2026-03-07
+Stopped at: Completed 06-04-PLAN.md — human verification PASS; all 6 Phase 6 criteria confirmed; Phase 6 COMPLETE; v1.0 milestone achieved
 Resume file: None
