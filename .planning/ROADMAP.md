@@ -148,12 +148,20 @@ Plans:
 **Depends on**: Phase 6
 **Requirements**: (No new requirements — cross-cutting quality gate across all 23 v1 requirements)
 **Success Criteria** (what must be TRUE):
-  1. The briefing email renders correctly in Gmail, Outlook, and Apple Mail (tested via Litmus or Mail Tester)
+  1. The briefing email renders correctly in Gmail, Outlook, and Apple Mail (tested via Mail Tester)
   2. The full unsubscribe flow is verified end-to-end: link click → immediate suppression → no further sends
-  3. Injecting a permanently-failing feed URL into the pipeline confirms the pipeline continues and the failure is logged
+  3. All pipeline error stages produce structured JSON console logs visible in Vercel log drain
   4. AI briefing summaries pass a manual spot-check audit confirming no hallucinated claims against source articles
   5. Basic observability is in place: per-stage error logging and a daily briefing count metric are visible before first beta send
-**Plans**: TBD
+**Plans**: 6 plans
+
+Plans:
+- [ ] 07-01-PLAN.md — Structured logging patch: upgrade ingestion recordError and summarisation catch block to emit JSON console.error
+- [ ] 07-02-PLAN.md — Admin scripts: briefing-count.ts (daily metric) and audit-briefing.ts (AI audit document generator)
+- [ ] 07-03-PLAN.md — Unsubscribe page + E2E verification: create /unsubscribed page, human-verify full flow
+- [ ] 07-04-PLAN.md — Email client testing: send via Mail Tester, verify in Gmail web/mobile, Apple Mail, Outlook desktop
+- [ ] 07-05-PLAN.md — AI hallucination audit: run audit-briefing.ts, human review 10+ items for fabricated facts
+- [ ] 07-06-PLAN.md — BETA-CHECKLIST.md: write formal gate sign-off document with evidence from all prior plans
 
 ## Progress
 
@@ -169,4 +177,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5 → 5.1 → 6 → 7
 | 5. Scheduling and Delivery | 4/5 | In Progress|  |
 | 5.1. Settings Page | 3/3 | Complete    | 2026-03-04 |
 | 6. Web App | 4/4 | Complete   | 2026-03-07 |
-| 7. Beta Polish | 0/TBD | Not started | - |
+| 7. Beta Polish | 0/6 | Not started | - |
