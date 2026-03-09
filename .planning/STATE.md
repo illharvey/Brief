@@ -31,16 +31,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 07 (Beta Polish) — IN PROGRESS. 1 of 6 plans done.
+**Current focus:** Phase 07 (Beta Polish) — IN PROGRESS. 2 of 6 plans done.
 
 ## Current Position
 
-Phase: 07 of 7 (Beta Polish) — IN PROGRESS (1 of 6 plans done)
-Plan: 07-01 complete — Structured JSON error logging added to ingestion recordError and summarisation catch block; TypeScript clean
-Status: Phase 07 IN PROGRESS — beta observability gate criterion 5 met for ingestion and summarisation stages
-Last activity: 2026-03-09 — Phase 7 Plan 01 complete
+Phase: 07 of 7 (Beta Polish) — IN PROGRESS (2 of 6 plans done)
+Plan: 07-02 complete — Two admin CLI scripts: briefing-count.ts (daily sent count table) and audit-briefing.ts (AI claim audit doc generator with fromCache=false filter)
+Status: Phase 07 IN PROGRESS — admin observability tools ready; gate criterion 4 (AI audit) and 5 (count metric) tooling in place
+Last activity: 2026-03-09 — Phase 7 Plan 02 complete
 
-Progress: [█░░░░░░░░░] 14%
+Progress: [██░░░░░░░░] 29%
 
 ## Performance Metrics
 
@@ -74,6 +74,7 @@ Progress: [█░░░░░░░░░] 14%
 | Phase 06-web-app P03 | ~2min | 2 tasks | 9 files |
 | Phase 06-web-app P04 | ~15min | 2 tasks | 4 files |
 | Phase 07-beta-polish P01 | 2 | 2 tasks | 2 files |
+| Phase 07-beta-polish P02 | ~2min | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -168,6 +169,9 @@ Recent decisions affecting current work:
 - [06-04]: Log in link added to LandingNav href=/login so returning users have a clear path without manually typing /login
 - [Phase 07-01]: recordError closure captures userId from ingestForUser parameter — no signature change needed; result.errors preserved for callers
 - [Phase 07-01]: All four pipeline stages now emit consistent structured JSON logs to Vercel log drain — stage field is 'ingestion', 'summarisation', or 'dispatch'
+- [Phase 07-02]: briefing-count.ts uses sql template literal for combined status+deliveryDate filter — avoids chaining eq()+gte() on text column across drizzle type constraints
+- [Phase 07-02]: audit-briefing.ts filters fromCache=false client-side after query — simpler for small result sets at beta scale
+- [Phase 07-02]: sourceSnapshot truncated at 500 chars in audit doc — keeps Markdown audit readable without losing attribution reference
 
 ### Pending Todos
 
@@ -180,5 +184,5 @@ None — Phase 06 complete. All 6 success criteria human-verified PASS. v1.0 mil
 ## Session Continuity
 
 Last session: 2026-03-09
-Stopped at: Completed 07-01-PLAN.md — structured JSON logging added to ingestion recordError and summarisation catch block; TypeScript clean; gate criterion 5 met for two pipeline stages
+Stopped at: Completed 07-02-PLAN.md — admin CLI scripts briefing-count.ts and audit-briefing.ts; TypeScript clean; gate criteria 4 and 5 tooling ready
 Resume file: None
