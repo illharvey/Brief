@@ -1,8 +1,8 @@
 // src/lib/summarisation/llm.ts
 // LLM article summarisation with Redis cache-aside and input truncation.
-// Cache hit → return cached. Miss → truncate → call Haiku → cache → return.
+// Cache hit → return cached. Miss → truncate → call LLM → cache → return.
 
-import { GoogleGenerativeAI } from '@google/generative-ai'
+import OpenAI from 'openai'
 import { getSummary, setSummary } from './cache'
 import { normaliseUrl } from '@/lib/ingestion/dedup'
 import type { ArticleRow } from './types'
@@ -36,11 +36,16 @@ function buildSourceSnapshot(article: ArticleRow): string {
   return truncate(raw)
 }
 
+const client = new OpenAI({
+  apiKey: process.env.OPENROUTER_API_KEY,
+  baseURL: 'https://openrouter.ai/api/v1',
+})
+
 export async function summariseArticle(
   article: ArticleRow
 ): Promise<{ summary: string; fromCache: boolean; sourceSnapshot: string }> {
-  if (!process.env.GEMINI_API_KEY) {
-    throw new Error('GEMINI_API_KEY is not set — cannot call Gemini API')
+  if (!process.env.OPENROUTER_API_KEY) {
+    throw new Error('OPENROUTER_API_KEY is not set — cannot call LLM')
   }
 
   const normUrl = normaliseUrl(article.url)
@@ -55,17 +60,19 @@ export async function summariseArticle(
   const sourceSnapshot = buildSourceSnapshot(article)
 
   // 3. LLM call
-  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
-  const model = genAI.getGenerativeModel({
-    model: process.env.SUMMARISATION_MODEL ?? 'gemini-2.5-flash-lite',
-    systemInstruction: SYSTEM_PROMPT,
-  })
   const isTitleOnly = sourceSnapshot.trim() === article.title.trim()
   const userMessage = isTitleOnly
     ? `Title only — no article body available. Summarise only what the title explicitly states. Do not add any names, figures, dates, or details not present in the title.\n\nTitle: ${article.title}`
     : `Title: ${article.title}\n\n${sourceSnapshot}`
-  const result = await model.generateContent(userMessage)
-  const summary = result.response.text().trim()
+
+  const response = await client.chat.completions.create({
+    model: process.env.SUMMARISATION_MODEL ?? 'google/gemini-2.0-flash-lite',
+    messages: [
+      { role: 'system', content: SYSTEM_PROMPT },
+      { role: 'user', content: userMessage },
+    ],
+  })
+  const summary = response.choices[0]?.message?.content?.trim() ?? ''
 
   // 4. Cache the result before returning
   if (summary) {

@@ -23,3 +23,10 @@ export interface IngestionResult {
   skipped: number
   errors: SourceError[]
 }
+
+export interface EnrichmentResult {
+  attempted: number
+  enriched: number
+  failed: number
+  errors: Array<{ url: string; message: string }>
+}

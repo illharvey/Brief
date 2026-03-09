@@ -2,6 +2,7 @@ import { and, eq } from 'drizzle-orm'
 import { db } from '@/lib/db/client'
 import { users, deliveryPreferences, deliveries } from '@/lib/db/schema'
 import { ingestForUser } from '@/lib/ingestion'
+import { enrichForUser } from '@/lib/ingestion/enrich'
 import { generateBriefingForUser } from '@/lib/summarisation'
 import { sendBriefingEmail } from '@/lib/email'
 import type { BriefingTopicSection } from '@/emails/briefing-email'
@@ -165,6 +166,7 @@ async function dispatchForUser(
 
   try {
     await ingestForUser(userId)
+    await enrichForUser(userId)
     const result = await generateBriefingForUser(userId)
 
     // 5. Zero-content day: record as skipped, do not send
