@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Trigger dispatch endpoint
         run: |
-          response=$(curl -s -o /tmp/body.txt -w "%{http_code}" \
+          response=$(curl -s -L -o /tmp/body.txt -w "%{http_code}" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             "${{ secrets.APP_URL }}/api/cron/dispatch")
           body=$(cat /tmp/body.txt)
