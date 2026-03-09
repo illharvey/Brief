@@ -32,9 +32,19 @@ export async function ingestForUser(userId: string): Promise<IngestionResult> {
   const result: IngestionResult = { fetched: 0, inserted: 0, skipped: 0, errors: [] }
 
   function recordError(source: string, err: unknown) {
+    const message = err instanceof Error ? err.message : String(err)
+    console.error(
+      JSON.stringify({
+        stage: 'ingestion',
+        source,
+        userId,
+        error: message,
+        timestamp: new Date().toISOString(),
+      })
+    )
     result.errors.push({
       source,
-      message: err instanceof Error ? err.message : String(err),
+      message,
       timestamp: new Date().toISOString(),
     })
   }
