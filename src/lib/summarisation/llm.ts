@@ -17,8 +17,9 @@ If the article contains a direct quote that adds value, include it with attribut
 Return only the bullet points, each starting with "- ". \
 Do not include a headline, source name, or URL — those are added separately. \
 IMPORTANT: Only state facts that are explicitly present in the provided text. \
-Do not infer, extrapolate, or supplement with background knowledge. \
-If the source text is too thin to produce accurate bullets, return a single bullet summarising only what is stated.`
+Do not infer, extrapolate, or supplement with background knowledge — not even plausible details. \
+If a specific fact (name, number, organisation, date) is not in the text, omit it entirely — never use placeholder text like [Name] or [Amount]. \
+Do not add commentary about what the source text does or does not contain.`
 
 function truncate(text: string): string {
   if (text.length <= MAX_INPUT_CHARS) return text

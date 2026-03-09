@@ -7,6 +7,7 @@ interface GuardianResult {
   webUrl: string
   sectionName: string
   webPublicationDate: string
+  fields?: { trailText?: string }
 }
 
 /**
@@ -42,5 +43,6 @@ export async function fetchGuardianApi(query: string): Promise<RawArticle[]> {
     sourceName: 'The Guardian',
     sourceUrl: 'https://www.theguardian.com',
     publishedAt: r.webPublicationDate ? new Date(r.webPublicationDate) : null,
+    description: r.fields?.trailText?.replace(/<[^>]+>/g, '').trim() || null,
   }))
 }

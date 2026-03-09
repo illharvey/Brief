@@ -33,5 +33,6 @@ export async function fetchRssSource(url: string, sourceName: string): Promise<R
       sourceName,
       sourceUrl: feed.link ?? url,
       publishedAt: item.pubDate ? new Date(item.pubDate) : null,
+      description: item.contentSnippet?.trim() || null,
     }))
 }

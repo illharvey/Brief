@@ -8,6 +8,7 @@ export interface RawArticle {
   sourceName: string
   sourceUrl?: string | null
   publishedAt?: Date | null
+  description?: string | null
 }
 
 export interface SourceError {

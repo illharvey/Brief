@@ -24,6 +24,7 @@ export async function insertArticles(
     sourceName: a.sourceName,
     sourceUrl: a.sourceUrl ?? null,
     publishedAt: a.publishedAt ?? null,
+    description: a.description ?? null,
     userId,
   }))
 

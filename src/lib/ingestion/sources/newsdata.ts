@@ -34,5 +34,6 @@ export async function fetchNewsdataApi(query: string): Promise<RawArticle[]> {
       sourceName: (r.source_id as string) || 'Unknown',
       sourceUrl: (r.source_url as string | null) ?? null,
       publishedAt: r.pubDate ? new Date(r.pubDate as string) : null,
+      description: (r.description as string | null)?.trim() || null,
     }))
 }
