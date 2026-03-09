@@ -3,12 +3,12 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: unknown
-last_updated: "2026-03-07T13:52:56.142Z"
+last_updated: "2026-03-09T08:38:36.786Z"
 progress:
-  total_phases: 7
+  total_phases: 8
   completed_phases: 7
-  total_plans: 29
-  completed_plans: 29
+  total_plans: 35
+  completed_plans: 30
 ---
 
 ---
@@ -31,16 +31,16 @@ progress:
 See: .planning/PROJECT.md (updated 2026-02-25)
 
 **Core value:** A person picks their interests once, and every day at their chosen time, Brief delivers everything they need to know — without toxicity, ads, or algorithmic manipulation.
-**Current focus:** Phase 06 (Web App) — COMPLETE. All 4 plans done. All 6 success criteria human-verified PASS.
+**Current focus:** Phase 07 (Beta Polish) — IN PROGRESS. 1 of 6 plans done.
 
 ## Current Position
 
-Phase: 06 of 6 (Web App) — COMPLETE (4 of 4 plans done)
-Plan: 06-04 complete — Human verification PASS: all 6 phase criteria confirmed in live browser; Log in link in landing nav; refreshBriefingAction + RefreshBriefingButton added to /dashboard
-Status: Phase 06 COMPLETE — v1.0 milestone achieved; ready for closed beta deployment
-Last activity: 2026-03-07 — Phase 6 Plan 04 human verification approved; all criteria PASS
+Phase: 07 of 7 (Beta Polish) — IN PROGRESS (1 of 6 plans done)
+Plan: 07-01 complete — Structured JSON error logging added to ingestion recordError and summarisation catch block; TypeScript clean
+Status: Phase 07 IN PROGRESS — beta observability gate criterion 5 met for ingestion and summarisation stages
+Last activity: 2026-03-09 — Phase 7 Plan 01 complete
 
-Progress: [██████████] 100%
+Progress: [█░░░░░░░░░] 14%
 
 ## Performance Metrics
 
@@ -73,6 +73,7 @@ Progress: [██████████] 100%
 | Phase 06-web-app P02 | 2min | 2 tasks | 7 files |
 | Phase 06-web-app P03 | ~2min | 2 tasks | 9 files |
 | Phase 06-web-app P04 | ~15min | 2 tasks | 4 files |
+| Phase 07-beta-polish P01 | 2 | 2 tasks | 2 files |
 
 ## Accumulated Context
 
@@ -165,6 +166,8 @@ Recent decisions affecting current work:
 - [06-04]: refreshBriefingAction calls generateBriefingForUser then redirect('/dashboard') — server-side redirect after generation avoids client polling
 - [06-04]: RefreshBriefingButton uses React useFormStatus pending state to disable button during generation
 - [06-04]: Log in link added to LandingNav href=/login so returning users have a clear path without manually typing /login
+- [Phase 07-01]: recordError closure captures userId from ingestForUser parameter — no signature change needed; result.errors preserved for callers
+- [Phase 07-01]: All four pipeline stages now emit consistent structured JSON logs to Vercel log drain — stage field is 'ingestion', 'summarisation', or 'dispatch'
 
 ### Pending Todos
 
@@ -176,6 +179,6 @@ None — Phase 06 complete. All 6 success criteria human-verified PASS. v1.0 mil
 
 ## Session Continuity
 
-Last session: 2026-03-07
-Stopped at: Completed 06-04-PLAN.md — human verification PASS; all 6 Phase 6 criteria confirmed; Phase 6 COMPLETE; v1.0 milestone achieved
+Last session: 2026-03-09
+Stopped at: Completed 07-01-PLAN.md — structured JSON logging added to ingestion recordError and summarisation catch block; TypeScript clean; gate criterion 5 met for two pipeline stages
 Resume file: None
