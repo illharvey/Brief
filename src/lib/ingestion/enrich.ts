@@ -3,7 +3,7 @@
 // Uses Mozilla Readability to extract clean article text from HTML.
 
 import { and, eq, gte, isNull } from 'drizzle-orm'
-import { JSDOM } from 'jsdom'
+import { JSDOM, VirtualConsole } from 'jsdom'
 import { Readability } from '@mozilla/readability'
 import { db } from '@/lib/db/client'
 import { articles } from '@/lib/db/schema'
@@ -79,7 +79,8 @@ async function scrapeAndStore(articleId: string, url: string): Promise<boolean> 
     throw err
   }
 
-  const dom = new JSDOM(html, { url })
+  const virtualConsole = new VirtualConsole()
+  const dom = new JSDOM(html, { url, virtualConsole })
   const reader = new Readability(dom.window.document)
   const parsed = reader.parse()
 
