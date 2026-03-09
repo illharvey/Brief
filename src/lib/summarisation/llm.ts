@@ -15,7 +15,10 @@ Summarise the article in 1–3 concise bullet points. \
 Use a factual, journalistic tone — no editorialising or opinion. \
 If the article contains a direct quote that adds value, include it with attribution. \
 Return only the bullet points, each starting with "- ". \
-Do not include a headline, source name, or URL — those are added separately.`
+Do not include a headline, source name, or URL — those are added separately. \
+IMPORTANT: Only state facts that are explicitly present in the provided text. \
+Do not infer, extrapolate, or supplement with background knowledge. \
+If the source text is too thin to produce accurate bullets, return a single bullet summarising only what is stated.`
 
 function truncate(text: string): string {
   if (text.length <= MAX_INPUT_CHARS) return text
