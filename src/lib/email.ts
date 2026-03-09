@@ -12,7 +12,7 @@ import type { BriefingTopicSection } from "@/emails/briefing-email"
 export const resend = new Resend(process.env.RESEND_API_KEY)
 
 const FROM_ADDRESS = "Brief <noreply@briefnews.online>"
-const APP_URL = process.env.APP_URL ?? "https://brief.app"
+const APP_URL = process.env.APP_URL ?? "https://briefnews.online"
 
 // ---------------------------------------------------------------------------
 // Suppression check — query DB before every send (MAIL-03 / AUTH-07)

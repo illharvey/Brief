@@ -3,7 +3,7 @@ import { validateUnsubscribeToken } from "@/lib/email"
 import { db } from "@/lib/db/client"
 import { emailSuppressions } from "@/lib/db/schema"
 
-const APP_URL = process.env.APP_URL ?? "https://brief.app"
+const APP_URL = process.env.APP_URL ?? "https://briefnews.online"
 
 async function suppressEmail(email: string): Promise<void> {
   await db
