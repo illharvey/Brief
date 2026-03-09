@@ -60,7 +60,11 @@ export async function summariseArticle(
     model: process.env.SUMMARISATION_MODEL ?? 'gemini-2.5-flash-lite',
     systemInstruction: SYSTEM_PROMPT,
   })
-  const result = await model.generateContent(`Title: ${article.title}\n\n${sourceSnapshot}`)
+  const isTitleOnly = sourceSnapshot.trim() === article.title.trim()
+  const userMessage = isTitleOnly
+    ? `Title only — no article body available. Summarise only what the title explicitly states. Do not add any names, figures, dates, or details not present in the title.\n\nTitle: ${article.title}`
+    : `Title: ${article.title}\n\n${sourceSnapshot}`
+  const result = await model.generateContent(userMessage)
   const summary = result.response.text().trim()
 
   // 4. Cache the result before returning
