@@ -89,7 +89,16 @@ export async function generateBriefingForUser(userId: string): Promise<BriefingR
         }
       }
     } catch (err) {
-      console.error(`[summarisation] Topic "${topic}" failed:`, err)
+      const message = err instanceof Error ? err.message : String(err)
+      console.error(
+        JSON.stringify({
+          stage: 'summarisation',
+          userId,
+          topic,
+          error: message,
+          timestamp: new Date().toISOString(),
+        })
+      )
       failedTopics.push(topic)
     }
   }
