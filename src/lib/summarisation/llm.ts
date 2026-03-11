@@ -74,7 +74,7 @@ export async function summariseArticle(
     : `Title: ${article.title}\n\n${sourceSnapshot}`
 
   const response = await client.chat.completions.create({
-    model: process.env.SUMMARISATION_MODEL ?? 'google/gemini-2.0-flash-lite',
+    model: process.env.SUMMARISATION_MODEL ?? 'google/gemini-flash-1.5',
     messages: [
       { role: 'system', content: SYSTEM_PROMPT },
       { role: 'user', content: userMessage },
