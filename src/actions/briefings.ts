@@ -6,8 +6,6 @@ import { enrichForUser } from "@/lib/ingestion/enrich"
 import { generateBriefingForUser } from "@/lib/summarisation"
 import { revalidatePath } from "next/cache"
 
-export const maxDuration = 300
-
 export async function refreshBriefingAction() {
   const session = await auth()
   if (!session?.user?.id) throw new Error("Unauthenticated")

@@ -11,6 +11,8 @@ import { getAdjacentTopics } from "@/lib/topic-graph"
 import { extractBriefingHeadline } from "@/lib/utils"
 import Link from "next/link"
 
+export const maxDuration = 300
+
 export default async function DashboardPage() {
   const session = await auth()
   if (!session?.user?.id) redirect("/login")
